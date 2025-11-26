@@ -1,0 +1,181 @@
+import React from "react";
+
+// AyitiChrono - Page d'accueil (React + Tailwind)
+// Usage:
+// - Copiez ce composant dans un projet React (Create React App / Vite / Next.js)
+// - Tailwind doit être installé et configuré dans le projet
+// - Les images sont des placeholders — remplacez par vos médias
+
+const sampleArticles = [
+  {
+    id: 1,
+    title: "Crise économique : les clés pour comprendre",
+    excerpt:
+      "Un panorama clair des principaux indicateurs et des mesures envisagées pour stabiliser l'économie.",
+    category: "Économie",
+    image: "https://via.placeholder.com/900x600?text=Économie",
+    author: "Jean Pierre",
+    time: "2h"
+  },
+  {
+    id: 2,
+    title: "Élections locales : calendrier et enjeux",
+    excerpt:
+      "Ce que chaque citoyen doit savoir sur les prochaines échéances électorales et leurs implications.",
+    category: "Politique",
+    image: "https://via.placeholder.com/900x600?text=Politique",
+    author: "Marie Claude",
+    time: "5h"
+  },
+  {
+    id: 3,
+    title: "Initiatives locales : des solutions qui marchent",
+    excerpt:
+      "Reportage sur des projets communautaires qui transforment des quartiers entiers.",
+    category: "Société",
+    image: "https://via.placeholder.com/900x600?text=Soci%C3%A9t%C3%A9",
+    author: "Daniel Grégoire",
+    time: "1j"
+  }
+];
+
+const categories = ["À la Une", "Politique", "Économie", "Société", "Culture", "Technologie"];
+
+function Header() {
+  return (
+    <header className="bg-white shadow-sm sticky top-0 z-40">
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="flex items-center justify-between h-16">
+          <div className="flex items-center gap-4">
+            <div className="text-2xl font-extrabold tracking-tight text-gray-900">AyitiChrono</div>
+            <span className="text-sm text-gray-500">L'actualité d'aujourd'hui, la vision de demain</span>
+          </div>
+          <nav className="hidden md:flex items-center gap-6 text-sm text-gray-600">
+            {categories.map((c) => (
+              <a key={c} href={`#${c}`} className="hover:text-gray-900">
+                {c}
+              </a>
+            ))}
+            <a href="#subscribe" className="ml-4 inline-flex items-center px-3 py-1.5 border rounded-md text-sm font-medium bg-blue-600 text-white hover:bg-blue-700">S'abonner</a>
+          </nav>
+          <div className="md:hidden">
+            <button className="p-2 rounded-md border">Menu</button>
+          </div>
+        </div>
+      </div>
+    </header>
+  );
+}
+
+function Hero({ article }) {
+  return (
+    <section className="bg-gray-50">
+      <div className="max-w-6xl mx-auto px-4 py-10 grid grid-cols-1 lg:grid-cols-3 gap-6">
+        <div className="lg:col-span-2">
+          <article className="relative rounded-lg overflow-hidden shadow-lg bg-white">
+            <img src={article.image} alt={article.title} className="w-full h-72 object-cover" />
+            <div className="p-6">
+              <div className="text-sm text-blue-600 font-semibold">{article.category}</div>
+              <h1 className="mt-2 text-2xl md:text-3xl font-bold text-gray-900">{article.title}</h1>
+              <p className="mt-3 text-gray-600">{article.excerpt}</p>
+              <div className="mt-4 text-sm text-gray-500">Par {article.author} — {article.time}</div>
+            </div>
+          </article>
+        </div>
+        <aside className="flex flex-col gap-4">
+          <div className="bg-white rounded-lg shadow p-4">
+            <h3 className="font-semibold text-gray-800">Dernières</h3>
+            <ul className="mt-3 space-y-3 text-sm text-gray-600">
+              {sampleArticles.map(a => (
+                <li key={a.id} className="flex gap-3">
+                  <img src={a.image} alt="mini" className="w-16 h-12 object-cover rounded" />
+                  <div>
+                    <div className="font-medium text-gray-900">{a.title}</div>
+                    <div className="text-xs text-gray-500">{a.time} • {a.category}</div>
+                  </div>
+                </li>
+              ))}
+            </ul>
+          </div>
+          <div className="bg-white rounded-lg shadow p-4">
+            <h3 className="font-semibold text-gray-800">Newsletter</h3>
+            <p className="mt-2 text-sm text-gray-600">Recevez chaque matin un résumé de l'actualité.</p>
+            <div className="mt-3 flex gap-2">
+              <input className="flex-1 p-2 border rounded" placeholder="Votre email" />
+              <button className="px-3 py-2 bg-blue-600 text-white rounded">S'inscrire</button>
+            </div>
+          </div>
+        </aside>
+      </div>
+    </section>
+  );
+}
+
+function CategorySection({ title, articles }) {
+  return (
+    <section id={title} className="max-w-6xl mx-auto px-4 py-8">
+      <h2 className="text-xl font-bold mb-4">{title}</h2>
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+        {articles.map(a => (
+          <article key={a.id} className="bg-white rounded shadow overflow-hidden">
+            <img src={a.image} alt={a.title} className="w-full h-40 object-cover" />
+            <div className="p-4">
+              <div className="text-xs text-blue-600 font-semibold">{a.category}</div>
+              <h3 className="mt-2 font-semibold text-gray-900">{a.title}</h3>
+              <p className="mt-2 text-sm text-gray-600">{a.excerpt}</p>
+              <div className="mt-3 text-xs text-gray-500">Par {a.author} • {a.time}</div>
+            </div>
+          </article>
+        ))}
+      </div>
+    </section>
+  );
+}
+
+function Footer() {
+  return (
+    <footer className="bg-gray-900 text-gray-200 mt-10">
+      <div className="max-w-6xl mx-auto px-4 py-8 flex flex-col md:flex-row justify-between">
+        <div>
+          <h4 className="font-bold text-lg">AyitiChrono</h4>
+          <p className="mt-2 text-sm text-gray-300 max-w-md">L'actualité d'aujourd'hui, la vision de demain. Journalisme indépendant, enquêtes et analyses.</p>
+        </div>
+        <div className="mt-6 md:mt-0 text-sm">
+          <div>Contact: contact@ayitichrono.com</div>
+          <div className="mt-2">Suivez-nous : Twitter · Facebook · Instagram</div>
+        </div>
+      </div>
+      <div className="text-center text-xs text-gray-500 py-4 border-t border-gray-800">© {new Date().getFullYear()} AyitiChrono — Tous droits réservés</div>
+    </footer>
+  );
+}
+
+export default function AyitiChronoHome() {
+  // Répartition d'articles factices par catégorie
+  const economy = sampleArticles.filter(a => a.category === 'Économie');
+  const politics = sampleArticles.filter(a => a.category === 'Politique');
+  const society = sampleArticles.filter(a => a.category === 'Société');
+  const featured = sampleArticles[0];
+
+  return (
+    <div className="min-h-screen bg-gray-100 font-sans">
+      <Header />
+      <main>
+        <Hero article={featured} />
+
+        <CategorySection title="À la Une" articles={sampleArticles} />
+        <CategorySection title="Politique" articles={politics.length ? politics : sampleArticles} />
+        <CategorySection title="Économie" articles={economy.length ? economy : sampleArticles} />
+        <CategorySection title="Société" articles={society.length ? society : sampleArticles} />
+
+        <section className="max-w-6xl mx-auto px-4 py-8">
+          <div className="bg-white rounded shadow p-6">
+            <h3 className="text-lg font-bold">À propos</h3>
+            <p className="mt-3 text-sm text-gray-600">AyitiChrono est un média indépendant dédié à l'information et à l'analyse. Notre mission : informer, contextualiser et proposer des pistes pour l'avenir d'Haïti.</p>
+          </div>
+        </section>
+      </main>
+      <Footer />
+    </div>
+  );
+}
