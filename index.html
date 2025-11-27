@@ -12,13 +12,11 @@ body {
     background: #f5f5f5;
 }
 
-/* Header sticky avec menu */
+/* Header sticky */
 header {
     background: #007bff;
     color: white;
     padding: 15px 25px;
-    font-size: 22px;
-    font-weight: bold;
     position: sticky;
     top: 0;
     z-index: 1000;
@@ -30,11 +28,14 @@ header {
 
 .logo {
     font-size: 26px;
+    font-weight: bold;
 }
 
+/* Menu classique */
 nav {
     display: flex;
     gap: 15px;
+    flex-wrap: wrap;
 }
 
 nav a {
@@ -50,19 +51,36 @@ nav a:hover {
     border-radius: 4px;
 }
 
-/* Menu hamburger mobile */
-.menu-toggle {
+/* Hamburger menu */
+#menu-toggle {
     display: none;
     flex-direction: column;
     cursor: pointer;
+    gap: 4px;
 }
 
-.menu-toggle span {
-    height: 3px;
+#menu-toggle span {
     width: 25px;
+    height: 3px;
     background: white;
-    margin: 4px 0;
+    display: block;
     border-radius: 2px;
+}
+
+/* Mobile menu */
+@media (max-width: 768px){
+    nav {
+        display: none;
+        position: absolute;
+        top: 60px;
+        right: 25px;
+        background: #007bff;
+        flex-direction: column;
+        padding: 15px;
+        border-radius: 8px;
+    }
+    nav.active { display: flex; }
+    #menu-toggle { display: flex; }
 }
 
 /* Hero */
@@ -95,21 +113,10 @@ nav a:hover {
     text-shadow: 0 2px 6px rgba(0,0,0,0.7);
 }
 
-.hero-text h1 {
-    font-size: 40px;
-    margin: 0;
-}
+.hero-text h1 { font-size: 40px; margin: 0; }
+.hero-text p { font-size: 18px; margin-top: 10px; }
 
-.hero-text p {
-    font-size: 18px;
-    margin-top: 10px;
-}
-
-/* Sections */
-.section {
-    padding: 25px;
-}
-
+.section { padding: 25px; }
 .section h2 {
     margin-bottom: 15px;
     font-size: 28px;
@@ -136,11 +143,8 @@ nav a:hover {
     margin-bottom: 10px;
 }
 
-.card h3 {
-    margin-top: 0;
-}
+.card h3 { margin-top: 0; }
 
-/* Footer */
 footer {
     background: #007bff;
     color: white;
@@ -152,14 +156,12 @@ footer {
 .footer-social {
     margin-top: 15px;
 }
-
 .footer-social a {
     display: inline-block;
     margin: 0 10px;
     color: white;
     text-decoration: none;
 }
-
 .footer-social svg {
     width: 24px;
     height: 24px;
@@ -167,7 +169,6 @@ footer {
     fill: white;
     transition: fill 0.3s;
 }
-
 .footer-social a:hover svg {
     fill: #ffcc00;
 }
@@ -177,40 +178,13 @@ footer {
     font-size: 14px;
 }
 
-/* Responsive */
-@media (max-width: 768px) {
-    nav {
-        display: none;
-        flex-direction: column;
-        background: #007bff;
-        position: absolute;
-        top: 60px;
-        right: 0;
-        width: 200px;
-        border-left: 1px solid #0056b3;
-        padding: 10px 0;
-    }
-
-    nav a {
-        padding: 10px 15px;
-        margin: 0;
-    }
-
-    .menu-toggle {
-        display: flex;
-    }
-
-    nav.active {
-        display: flex;
-    }
-}
 </style>
 </head>
 <body>
 
 <header>
     <div class="logo">AyitiChrono</div>
-    <div class="menu-toggle" id="menu-toggle">
+    <div id="menu-toggle">
         <span></span>
         <span></span>
         <span></span>
@@ -243,162 +217,36 @@ footer {
     </div>
 </section>
 
-<!-- Actualités -->
+<!-- Exemple de sections d’articles -->
 <section class="section">
     <h2>Actualités</h2>
     <div class="articles">
         <div class="card">
-            <img src="https://images.unsplash.com/photo-1581091215367-0c2fa6a7db35?auto=format&fit=crop&w=400&q=60" alt="">
+            <img src="https://images.unsplash.com/photo-1581091215367-0c2fa6a7db35?auto=format&fit=crop&w=400&q=60" alt="Actualités image 1">
             <h3>Titre d’article 1</h3>
             <p>Résumé rapide de l’information…</p>
         </div>
         <div class="card">
-            <img src="https://images.unsplash.com/photo-1581091012184-1047f4d0a034?auto=format&fit=crop&w=400&q=60" alt="">
+            <img src="https://images.unsplash.com/photo-1581091012184-1047f4d0a034?auto=format&fit=crop&w=400&q=60" alt="Actualités image 2">
             <h3>Titre d’article 2</h3>
-            <p>Résumé rapide de l’information…</p>
-        </div>
-        <div class="card">
-            <img src="https://images.unsplash.com/photo-1581090700220-53f1564cd96b?auto=format&fit=crop&w=400&q=60" alt="">
-            <h3>Titre d’article 3</h3>
             <p>Résumé rapide de l’information…</p>
         </div>
     </div>
 </section>
 
-<!-- Politique -->
 <section class="section">
     <h2>Politique</h2>
     <div class="articles">
         <div class="card">
-            <img src="https://images.unsplash.com/photo-1502880192-9389cf5c6f1e?auto=format&fit=crop&w=400&q=60" alt="">
+            <img src="https://images.unsplash.com/photo-1502880192-9389cf5c6f1e?auto=format&fit=crop&w=400&q=60" alt="Politique image 1">
             <h3>Titre politique 1</h3>
             <p>Résumé rapide de l’information…</p>
         </div>
-        <div class="card">
-            <img src="https://images.unsplash.com/photo-1502880192-9389cf5c6f1e?auto=format&fit=crop&w=400&q=60" alt="">
-            <h3>Titre politique 2</h3>
-            <p>Résumé rapide de l’information…</p>
-        </div>
     </div>
 </section>
 
-<!-- Économie -->
-<section class="section">
-    <h2>Économie</h2>
-    <div class="articles">
-        <div class="card">
-            <img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=400&q=60" alt="">
-            <h3>Titre économique 1</h3>
-            <p>Résumé rapide de l’information…</p>
-        </div>
-        <div class="card">
-            <img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=400&q=60" alt="">
-            <h3>Titre économique 2</h3>
-            <p>Résumé rapide de l’information…</p>
-        </div>
-    </div>
-</section>
-
-<!-- Société -->
-<section class="section">
-    <h2>Société</h2>
-    <div class="articles">
-        <div class="card">
-            <img src="https://images.unsplash.com/photo-1588854337115-3a017a2cb68e?auto=format&fit=crop&w=400&q=60" alt="">
-            <h3>Titre société 1</h3>
-            <p>Résumé rapide de l’information…</p>
-        </div>
-        <div class="card">
-            <img src="https://images.unsplash.com/photo-1588854337115-3a017a2cb68e?auto=format&fit=crop&w=400&q=60" alt="">
-            <h3>Titre société 2</h3>
-            <p>Résumé rapide de l’information…</p>
-        </div>
-    </div>
-</section>
-
-<!-- International -->
-<section class="section">
-    <h2>International</h2>
-    <div class="articles">
-        <div class="card">
-            <img src="https://images.unsplash.com/photo-1522075469751-3a6694fb2f61?auto=format&fit=crop&w=400&q=60" alt="">
-            <h3>Titre international 1</h3>
-            <p>Résumé rapide de l’information…</p>
-        </div>
-        <div class="card">
-            <img src="https://images.unsplash.com/photo-1522075469751-3a6694fb2f61?auto=format&fit=crop&w=400&q=60" alt="">
-            <h3>Titre international 2</h3>
-            <p>Résumé rapide de l’information…</p>
-        </div>
-    </div>
-</section>
-
-<!-- Autres sections : Droit humain, Sport, Météo, Sciences, Culture, Technologie -->
-<section class="section">
-    <h2>Droit humain</h2>
-    <div class="articles">
-        <div class="card">
-            <img src="https://images.unsplash.com/photo-1573497019927-0b31c1f8870e?auto=format&fit=crop&w=400&q=60" alt="">
-            <h3>Article droit humain 1</h3>
-            <p>Résumé rapide de l’information…</p>
-        </div>
-    </div>
-</section>
-
-<section class="section">
-    <h2>Sport</h2>
-    <div class="articles">
-        <div class="card">
-            <img src="https://images.unsplash.com/photo-1505842671139-6c6fda6c81a2?auto=format&fit=crop&w=400&q=60" alt="">
-            <h3>Article sport 1</h3>
-            <p>Résumé rapide de l’information…</p>
-        </div>
-    </div>
-</section>
-
-<section class="section">
-    <h2>Météo</h2>
-    <div class="articles">
-        <div class="card">
-            <img src="https://images.unsplash.com/photo-1501973801540-537f08ccae7b?auto=format&fit=crop&w=400&q=60" alt="">
-            <h3>Article météo 1</h3>
-            <p>Résumé rapide de l’information…</p>
-        </div>
-    </div>
-</section>
-
-<section class="section">
-    <h2>Sciences</h2>
-    <div class="articles">
-        <div class="card">
-            <img src="https://images.unsplash.com/photo-1581091215259-8c9f8427b7db?auto=format&fit=crop&w=400&q=60" alt="">
-            <h3>Article sciences 1</h3>
-            <p>Résumé rapide de l’information…</p>
-        </div>
-    </div>
-</section>
-
-<section class="section">
-    <h2>Culture</h2>
-    <div class="articles">
-        <div class="card">
-            <img src="https://images.unsplash.com/photo-1509099836639-18ba6b0d7d1c?auto=format&fit=crop&w=400&q=60" alt="">
-            <h3>Article culture 1</h3>
-            <p>Résumé rapide de l’information…</p>
-        </div>
-    </div>
-</section>
-
-<section class="section">
-    <h2>Technologie</h2>
-    <div class="articles">
-        <div class="card">
-            <img src="https://images.unsplash.com/photo-1518779578993-0b1e80f7590f?auto=format&fit=crop&w=400&q=60" alt="">
-            <h3>Article technologie 1</h3>
-            <p>Résumé rapide de l’information…</p>
-        </div>
-    </div>
-</section>
+<!-- Autres sections similaires : Économie, Société, International, Droit humain, Sport, Météo, Sciences, Culture, Technologie -->
+<!-- Vous pouvez copier-coller les cartes et changer images et titres -->
 
 <footer>
     <div class="footer-social">
@@ -412,4 +260,34 @@ footer {
             <svg viewBox="0 0 24 24"><path d="M21.8 8s-.2-1.5-1-2.1c-.9-.9-2-1-2.5-1.1C15.5 4 12 4 12 4s-3.5 0-6.3.2c-.5.1-1.6.2-2.5 1.1-.8.6-1 2.1-1 2.1S2 9.6 2 11.2v1.5C2 14.4 2.2 16 2.2 16s.2 1.5 1 2.1c.9.9 2 1 2.5 1.1 2.8.2 6.3.2 6.3.2s3.5 0 6.3-.2c.5-.1 1.6-.2 2.5-1.1.8-.6 1-2.1 1-2.1s.2-1.6.2-3.1v-1.5c0-1.5-.2-3.1-.2-3.1zM10 14.5v-5l5 2.5-5 2.5z"/></svg>
         </a>
         <a href="https://t.me/toncompte" target="_blank" aria-label="Telegram">
-            <svg viewBox="0 0 24 24"><path d="M21.12 2.65c-.28-.26-.64-.42-1.03-.44-.39-.02-.78.09-1.08.31L2.54 11.3c-.39.28-.65
+            <svg viewBox="0 0 24 24"><path d="M21.12 2.65c-.28-.26-.64-.42-1.03-.44-.39-.02-.78.09-1.08.31L2.54 11.3c-.39.28-.65.72-.68 1.2-.03.48.15.93.45 1.26.29.34.69.54 1.13.57l3.2.25 1.15 3.59c.08.25.23.47.42.65.18.18.41.31.65.39.24.09.5.12.76.09.26-.03.51-.11.73-.24l1.81-1.09 3.23 2.39c.3.22.66.33 1.02.31.36-.02.7-.16.97-.42.27-.26.46-.62.52-1.02l2.12-15.05c.06-.42-.06-.85-.32-1.16z"/></svg>
+        </a>
+    </div>
+    <div class="footer-info">
+        <p>Adresse : 109, Delmas 83, rue Beaubrum, Haïti</p>
+        <p>Contact : contact@ayitichrono.com</p>
+        <p><a href="#" style="color:white;">À propos de nous</a> | <a href="#" style="color:white;">Mentions légales</a></p>
+    </div>
+    <p>© 2025 AyitiChrono – Tous droits réservés.</p>
+</footer>
+
+<script>
+// Slider Hero
+let current = 0;
+const slides = document.querySelectorAll('.slides img');
+setInterval(() => {
+    slides[current].classList.remove('active');
+    current = (current + 1) % slides.length;
+    slides[current].classList.add('active');
+}, 5000);
+
+// Hamburger menu
+const toggle = document.getElementById('menu-toggle');
+const nav = document.getElementById('nav-menu');
+toggle.addEventListener('click', () => {
+    nav.classList.toggle('active');
+});
+</script>
+
+</body>
+</html>
