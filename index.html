@@ -5,49 +5,51 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>AyitiChrono – L’actualité en temps réel</title>
 
-    <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Merriweather:wght@700&display=swap" rel="stylesheet">
-
-    <!-- CSS interne pour simplicité -->
+    <!-- CSS interne -->
     <style>
         body {
             margin: 0;
-            font-family: 'Roboto', Arial, Helvetica, sans-serif;
+            font-family: Arial, Helvetica, sans-serif;
             background: #f5f5f5;
-            line-height: 1.6;
         }
 
+        /* Header et menu sticky */
         header {
-            background: #007bff;
+            background: #007bff; 
             color: white;
             padding: 15px 25px;
-            font-size: 26px;
-            font-family: 'Merriweather', serif;
-            font-weight: 700;
-        }
-
-        nav {
-            background: #0f7d2e;
-            padding: 10px 25px;
+            font-size: 22px;
+            font-weight: bold;
             position: sticky;
             top: 0;
-            z-index: 100;
+            z-index: 1000;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
         }
 
         nav a {
             color: white;
             margin-right: 20px;
             text-decoration: none;
-            font-size: 16px;
-            font-weight: 500;
+            font-size: 15px;
         }
 
         nav a:hover {
             text-decoration: underline;
         }
 
-        /* HERO SLIDER */
-        .hero { position: relative; height: 450px; overflow: hidden; }
+        nav {
+            display: flex;
+            align-items: center;
+        }
+
+        .hero {
+            position: relative;
+            height: 400px;
+            overflow: hidden;
+        }
+
         .slides img {
             position: absolute;
             width: 100%;
@@ -56,7 +58,11 @@
             opacity: 0;
             transition: opacity 1s;
         }
-        .slides img.active { opacity: 1; }
+
+        .slides img.active {
+            opacity: 1;
+        }
+
         .hero-text {
             position: absolute;
             top: 50%;
@@ -66,26 +72,26 @@
             text-align: center;
             text-shadow: 0 2px 6px rgba(0,0,0,0.7);
         }
+
         .hero-text h1 {
             font-size: 40px;
             margin: 0;
-            font-family: 'Merriweather', serif;
         }
+
         .hero-text p {
-            font-size: 20px;
+            font-size: 18px;
             margin-top: 10px;
         }
 
         .section {
-            padding: 30px 25px;
+            padding: 25px;
         }
 
         .section h2 {
-            margin-bottom: 20px;
+            margin-bottom: 15px;
             font-size: 28px;
             border-left: 5px solid #111;
             padding-left: 10px;
-            font-family: 'Merriweather', serif;
         }
 
         .articles {
@@ -103,32 +109,13 @@
 
         .card img {
             width: 100%;
-            border-radius: 6px;
+            border-radius: 5px;
+            margin-bottom: 10px;
         }
 
         .card h3 {
-            margin-top: 10px;
-            font-size: 18px;
-            color: #007bff;
+            margin-top: 0;
         }
-
-        .card p {
-            font-size: 14px;
-            color: #333;
-        }
-
-        .read-more {
-            display: inline-block;
-            margin-top: 10px;
-            padding: 5px 10px;
-            background: #0f7d2e;
-            color: white;
-            text-decoration: none;
-            border-radius: 4px;
-            font-size: 14px;
-        }
-
-        .read-more:hover { background: #0c5d1e; }
 
         footer {
             background: #007bff;
@@ -137,181 +124,145 @@
             padding: 25px;
             margin-top: 40px;
         }
+
+        .footer-social {
+            margin-top: 15px;
+        }
+        .footer-social a {
+            display: inline-block;
+            margin: 0 10px;
+            color: white;
+            text-decoration: none;
+        }
+        .footer-social svg {
+            width: 24px;
+            height: 24px;
+            vertical-align: middle;
+            fill: white;
+            transition: fill 0.3s;
+        }
+        .footer-social a:hover svg {
+            fill: #ffcc00;
+        }
+
+        .footer-info {
+            margin-top: 15px;
+            font-size: 14px;
+        }
     </style>
 </head>
 <body>
 
-    <header>AyitiChrono</header>
-
+<header>
+    AyitiChrono
     <nav>
-        <a href="index.html">Accueil</a>
-        <a href="actualites.html">Actualités</a>
-        <a href="politique.html">Politique</a>
-        <a href="economie.html">Économie</a>
-        <a href="societe.html">Société</a>
-        <a href="international.html">International</a>
+        <a href="#">Accueil</a>
+        <a href="#">Actualités</a>
+        <a href="#">Politique</a>
+        <a href="#">Économie</a>
+        <a href="#">Société</a>
+        <a href="#">International</a>
     </nav>
+</header>
 
-    <section class="hero">
-        <div class="slides">
-            <img src="images/hero1.jpg" class="active">
-            <img src="images/hero2.jpg">
-            <img src="images/hero3.jpg">
-        </div>
-        <div class="hero-text">
-            <h1>L’actualité, minute par minute</h1>
-            <p>Un regard clair, rapide et fiable sur l’info en Haïti et dans le monde.</p>
-        </div>
-    </section>
-
-    <section class="section">
-        <h2>Actualités</h2>
-        <div class="articles">
-            <div class="card">
-                <img src="images/article1.jpg" alt="Article 1">
-                <h3>Titre d’article 1</h3>
-                <p>Résumé rapide de l’information…</p>
-                <a href="#" class="read-more">Lire plus</a>
-            </div>
-            <div class="card">
-                <img src="images/article2.jpg" alt="Article 2">
-                <h3>Titre d’article 2</h3>
-                <p>Résumé rapide de l’information…</p>
-                <a href="#" class="read-more">Lire plus</a>
-            </div>
-        </div>
-    </section>
-
-    <section class="section">
-        <h2>Politique</h2>
-        <div class="articles">
-            <div class="card">
-                <img src="images/politique1.jpg" alt="Politique 1">
-                <h3>Titre politique 1</h3>
-                <p>Résumé rapide de l’information…</p>
-                <a href="#" class="read-more">Lire plus</a>
-            </div>
-            <div class="card">
-                <img src="images/politique2.jpg" alt="Politique 2">
-                <h3>Titre politique 2</h3>
-                <p>Résumé rapide de l’information…</p>
-                <a href="#" class="read-more">Lire plus</a>
-            </div>
-        </div>
-    </section>
-
-    <footer>
-        © 2025 AyitiChrono – Tous droits réservés.
-    </footer>
-
-    <script>
-        let current = 0;
-        const slides = document.querySelectorAll('.slides img');
-        setInterval(() => {
-            slides[current].classList.remove('active');
-            current = (current + 1) % slides.length;
-            slides[current].classList.add('active');
-        }, 5000);
-    </script>
-</body>
-</html>
-        <a href="societe.html">Société</a>
-        <a href="international.html">International</a>
-    </nav>
-
-    <section class="hero">
-  <video autoplay muted loop id="heroVideo">
-    <source src="video.mp4" type="video/mp4">
-  </video>
-  <div class="hero-text">
-    <h1>L’actualité, minute par minute</h1>
-  </div>
+<section class="hero">
+    <div class="slides">
+        <img src="https://images.unsplash.com/photo-1557682260-96773eb01377?auto=format&fit=crop&w=1600&q=60" class="active">
+        <img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1600&q=60">
+        <img src="https://images.unsplash.com/photo-1495020689067-958852a7765e?auto=format&fit=crop&w=1600&q=60">
+    </div>
+    <div class="hero-text">
+        <h1>L’actualité, minute par minute</h1>
+        <p>Un regard clair, rapide et fiable sur l’info en Haïti et dans le monde.</p>
+    </div>
 </section>
 
-<style>
-#heroVideo { width: 100%; height: 400px; object-fit: cover; }
-.hero-text { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); color: white; text-align: center; }
-</style>
-
-    <section class="section">
-        <h2>Actualités</h2>
-        <div class="articles">
-            <div class="card">
-                <h3>Titre d’article 1</h3>
-                <p>Résumé rapide de l’information…</p>
-            </div>
-
-            <div class="card">
-                <h3>Titre d’article 2</h3>
-                <p>Résumé rapide de l’information…</p>
-            </div>
-
-            <div class="card">
-                <h3>Titre d’article 3</h3>
-                <p>Résumé rapide de l’information…</p>
-            </div>
+<section class="section">
+    <h2>Actualités</h2>
+    <div class="articles">
+        <div class="card">
+            <img src="https://images.unsplash.com/photo-1581091215367-0c2fa6a7db35?auto=format&fit=crop&w=400&q=60" alt="">
+            <h3>Titre d’article 1</h3>
+            <p>Résumé rapide de l’information…</p>
         </div>
-    </section>
-
-    <section class="section">
-        <h2>Politique</h2>
-        <div class="articles">
-            <div class="card">
-                <h3>Titre politique 1</h3>
-                <p>Résumé rapide de l’information…</p>
-            </div>
-            <div class="card">
-                <h3>Titre politique 2</h3>
-                <p>Résumé rapide de l’information…</p>
-            </div>
+        <div class="card">
+            <img src="https://images.unsplash.com/photo-1581091012184-1047f4d0a034?auto=format&fit=crop&w=400&q=60" alt="">
+            <h3>Titre d’article 2</h3>
+            <p>Résumé rapide de l’information…</p>
         </div>
-    </section>
-
-    <section class="section">
-        <h2>Économie</h2>
-        <div class="articles">
-            <div class="card">
-                <h3>Titre économique 1</h3>
-                <p>Résumé rapide de l’information…</p>
-            </div>
-            <div class="card">
-                <h3>Titre économique 2</h3>
-                <p>Résumé rapide de l’information…</p>
-            </div>
+        <div class="card">
+            <img src="https://images.unsplash.com/photo-1581090700220-53f1564cd96b?auto=format&fit=crop&w=400&q=60" alt="">
+            <h3>Titre d’article 3</h3>
+            <p>Résumé rapide de l’information…</p>
         </div>
-    </section>
+    </div>
+</section>
 
-    <section class="section">
-        <h2>Société</h2>
-        <div class="articles">
-            <div class="card">
-                <h3>Titre société 1</h3>
-                <p>Résumé rapide de l’information…</p>
-            </div>
-            <div class="card">
-                <h3>Titre société 2</h3>
-                <p>Résumé rapide de l’information…</p>
-            </div>
+<section class="section">
+    <h2>Politique</h2>
+    <div class="articles">
+        <div class="card">
+            <img src="https://images.unsplash.com/photo-1502880192-9389cf5c6f1e?auto=format&fit=crop&w=400&q=60" alt="">
+            <h3>Titre politique 1</h3>
+            <p>Résumé rapide de l’information…</p>
         </div>
-    </section>
-
-    <section class="section">
-        <h2>International</h2>
-        <div class="articles">
-            <div class="card">
-                <h3>Titre international 1</h3>
-                <p>Résumé rapide de l’information…</p>
-            </div>
-            <div class="card">
-                <h3>Titre international 2</h3>
-                <p>Résumé rapide de l’information…</p>
-            </div>
+        <div class="card">
+            <img src="https://images.unsplash.com/photo-1502880192-9389cf5c6f1e?auto=format&fit=crop&w=400&q=60" alt="">
+            <h3>Titre politique 2</h3>
+            <p>Résumé rapide de l’information…</p>
         </div>
-    </section>
+    </div>
+</section>
 
-    <footer>
-        © 2025 AyitiChrono – Tous droits réservés.
-    </footer>
+<section class="section">
+    <h2>Économie</h2>
+    <div class="articles">
+        <div class="card">
+            <img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=400&q=60" alt="">
+            <h3>Titre économique 1</h3>
+            <p>Résumé rapide de l’information…</p>
+        </div>
+        <div class="card">
+            <img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=400&q=60" alt="">
+            <h3>Titre économique 2</h3>
+            <p>Résumé rapide de l’information…</p>
+        </div>
+    </div>
+</section>
+
+<footer>
+    <div class="footer-social">
+        <a href="https://facebook.com/tonpage" target="_blank" aria-label="Facebook">
+            <svg viewBox="0 0 24 24"><path d="M22 12c0-5.52-4.48-10-10-10S2 6.48 2 12c0 5 3.66 9.13 8.44 9.88v-6.99h-2.54v-2.89h2.54V9.8c0-2.5 1.49-3.89 3.77-3.89 1.09 0 2.23.2 2.23.2v2.45h-1.25c-1.23 0-1.61.76-1.61 1.54v1.85h2.74l-.44 2.89h-2.3v6.99C18.34 21.13 22 17 22 12z"/></svg>
+        </a>
+        <a href="https://twitter.com/toncompte" target="_blank" aria-label="X">
+            <svg viewBox="0 0 24 24"><path d="M23 3a10.9 10.9 0 01-3.14 1.53 4.48 4.48 0 00-7.86 3v1A10.66 10.66 0 013 4s-4 9 5 13a11.64 11.64 0 01-7 2c9 5 20 0 20-11.5a4.5 4.5 0 00-.08-.83A7.72 7.72 0 0023 3z"/></svg>
+        </a>
+        <a href="https://youtube.com/tonchaine" target="_blank" aria-label="YouTube">
+            <svg viewBox="0 0 24 24"><path d="M21.8 8s-.2-1.5-1-2.1c-.9-.9-2-1-2.5-1.1C15.5 4 12 4 12 4s-3.5 0-6.3.2c-.5.1-1.6.2-2.5 1.1-.8.6-1 2.1-1 2.1S2 9.6 2 11.2v1.5C2 14.4 2.2 16 2.2 16s.2 1.5 1 2.1c.9.9 2 1 2.5 1.1 2.8.2 6.3.2 6.3.2s3.5 0 6.3-.2c.5-.1 1.6-.2 2.5-1.1.8-.6 1-2.1 1-2.1s.2-1.6.2-3.1v-1.5c0-1.5-.2-3.1-.2-3.1zM10 14.5v-5l5 2.5-5 2.5z"/></svg>
+        </a>
+        <a href="https://t.me/toncompte" target="_blank" aria-label="Telegram">
+            <svg viewBox="0 0 24 24"><path d="M21.12 2.65c-.28-.26-.64-.42-1.03-.44-.39-.02-.78.09-1.08.31L2.54 11.3c-.39.28-.65.72-.68 1.2-.03.48.15.93.45 1.26.29.34.69.54 1.13.57l3.2.25 1.15 3.59c.08.25.23.47.42.65.18.18.41.31.65.39.24.09.5.12.76.09.26-.03.51-.11.73-.24l1.81-1.09 3.23 2.39c.3.22.66.33 1.02.31.36-.02.7-.16.97-.42.27-.26.46-.62.52-1.02l2.12-15.05c.06-.42-.06-.85-.32-1.16z"/></svg>
+        </a>
+    </div>
+    <div class="footer-info">
+        <p>Adresse : 123 Rue Exemple, Port-au-Prince, Haïti</p>
+        <p>Contact : contact@ayitichrono.com</p>
+        <p><a href="#" style="color:white;">À propos de nous</a> | <a href="#" style="color:white;">Mentions légales</a></p>
+    </div>
+    <p>© 2025 AyitiChrono – Tous droits réservés.</p>
+</footer>
+
+<!-- Script pour le slider -->
+<script>
+let current = 0;
+const slides = document.querySelectorAll('.slides img');
+setInterval(() => {
+    slides[current].classList.remove('active');
+    current = (current + 1) % slides.length;
+    slides[current].classList.add('active');
+}, 5000);
+</script>
 
 </body>
 </html>
