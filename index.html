@@ -15,9 +15,9 @@
 
         /* Header et menu sticky */
         header {
-            background: #007bff; 
+            background: #007bff;
             color: white;
-            padding: 15px 25px;
+            padding: 10px 25px;
             font-size: 22px;
             font-weight: bold;
             position: sticky;
@@ -26,22 +26,31 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
         }
 
-        nav a {
-            color: white;
-            margin-right: 20px;
-            text-decoration: none;
-            font-size: 15px;
-        }
-
-        nav a:hover {
-            text-decoration: underline;
+        .logo {
+            font-size: 26px;
+            font-weight: bold;
+            letter-spacing: 1px;
         }
 
         nav {
             display: flex;
-            align-items: center;
+            gap: 15px;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-size: 16px;
+            padding: 6px 10px;
+            transition: background 0.3s, color 0.3s;
+        }
+
+        nav a:hover {
+            background: #0056b3;
+            border-radius: 4px;
         }
 
         .hero {
@@ -128,12 +137,14 @@
         .footer-social {
             margin-top: 15px;
         }
+
         .footer-social a {
             display: inline-block;
             margin: 0 10px;
             color: white;
             text-decoration: none;
         }
+
         .footer-social svg {
             width: 24px;
             height: 24px;
@@ -141,6 +152,7 @@
             fill: white;
             transition: fill 0.3s;
         }
+
         .footer-social a:hover svg {
             fill: #ffcc00;
         }
@@ -154,7 +166,7 @@
 <body>
 
 <header>
-    AyitiChrono
+    <div class="logo">AyitiChrono</div>
     <nav>
         <a href="#">Accueil</a>
         <a href="#">Actualités</a>
@@ -169,7 +181,7 @@
     <div class="slides">
         <img src="https://images.unsplash.com/photo-1557682260-96773eb01377?auto=format&fit=crop&w=1600&q=60" class="active">
         <img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1600&q=60">
-        <img src="https://images.unsplash.com/photo-1495020689067-958852a7765e?auto=format&fit=crop&w=1600&q=60">
+        <img src="https://images.unsplash.com/photo-1495020689067-958852a7765?auto=format&fit=crop&w=1600&q=60">
     </div>
     <div class="hero-text">
         <h1>L’actualité, minute par minute</h1>
@@ -230,6 +242,38 @@
     </div>
 </section>
 
+<section class="section">
+    <h2>Société</h2>
+    <div class="articles">
+        <div class="card">
+            <img src="https://images.unsplash.com/photo-1588854337115-3a017a2cb68e?auto=format&fit=crop&w=400&q=60" alt="">
+            <h3>Titre société 1</h3>
+            <p>Résumé rapide de l’information…</p>
+        </div>
+        <div class="card">
+            <img src="https://images.unsplash.com/photo-1588854337115-3a017a2cb68e?auto=format&fit=crop&w=400&q=60" alt="">
+            <h3>Titre société 2</h3>
+            <p>Résumé rapide de l’information…</p>
+        </div>
+    </div>
+</section>
+
+<section class="section">
+    <h2>International</h2>
+    <div class="articles">
+        <div class="card">
+            <img src="https://images.unsplash.com/photo-1522075469751-3a6694fb2f61?auto=format&fit=crop&w=400&q=60" alt="">
+            <h3>Titre international 1</h3>
+            <p>Résumé rapide de l’information…</p>
+        </div>
+        <div class="card">
+            <img src="https://images.unsplash.com/photo-1522075469751-3a6694fb2f61?auto=format&fit=crop&w=400&q=60" alt="">
+            <h3>Titre international 2</h3>
+            <p>Résumé rapide de l’information…</p>
+        </div>
+    </div>
+</section>
+
 <footer>
     <div class="footer-social">
         <a href="https://facebook.com/tonpage" target="_blank" aria-label="Facebook">
@@ -246,7 +290,7 @@
         </a>
     </div>
     <div class="footer-info">
-        <p>Adresse : 123 Rue Exemple, Port-au-Prince, Haïti</p>
+        <p>Adresse : 109, Delmas 83, rue Beaubrum, Haïti</p>
         <p>Contact : contact@ayitichrono.com</p>
         <p><a href="#" style="color:white;">À propos de nous</a> | <a href="#" style="color:white;">Mentions légales</a></p>
     </div>
