@@ -229,50 +229,58 @@
         </div>
     </section>
 
-    <!-- FOOTER -->
-    <footer>
-        <div><strong>AyitiChrono</strong> 
+    <footer style="
+  background:#0a3d0a;
+  color:white;
+  padding:40px 20px;
+  margin-top:60px;
+  font-family:Arial, sans-serif;
+">
 
-      L’actualité en temps réel</div>
+  <div style="max-width:1200px; margin:auto; display:flex; flex-wrap:wrap; justify-content:space-between;">
 
-        <div class="social">
-            <a href="#">YouTube</a>
-            <a href="#">Instagram</a>
-            <a href="#">X</a>
-            <a href="#">Facebook</a>
-        </div>
+    <!-- À propos -->
+    <div style="flex:1 1 250px; margin-bottom:20px;">
+      <h3 style="margin-bottom:10px; font-size:20px;">À propos</h3>
+      <p style="line-height:1.6;">
+        AyitiChrono est un média en ligne indépendant qui offre une information rapide, fiable et structurée sur l’actualité nationale et internationale.
+      </p>
+    </div>
 
-        <p>Adresse : 109, rue Beaubrun, Delmas 83, Haïti</p>
-        <p>Contact :contactayitichrono@gmail.com</p>
-        <p>Mentions légales – © 2025 AyitiChrono. Tous droits réservés.</p>
-    </footer>
+    <!-- Contact -->
+    <div style="flex:1 1 250px; margin-bottom:20px;">
+      <h3 style="margin-bottom:10px; font-size:20px;">Contact</h3>
+      <p style="line-height:1.6;">Adresse : 109, Delmas 83, rue Beaubrun, Haïti</p>
+      <p>Email : contact@ayitichrono.com</p>
+    </div>
 
-    <!-- SCRIPT DU MENU + SLIDER -->
-    <script>
-        const btn = document.getElementById("menu-btn");
-        const menu = document.getElementById("mobile-menu");
+    <!-- Réseaux sociaux -->
+    <div style="flex:1 1 250px; margin-bottom:20px;">
+      <h3 style="margin-bottom:10px; font-size:20px;">Nous suivre</h3>
+      <p>
+        <a href="#" style="color:white; text-decoration:none; margin-right:10px;">Facebook</a><br>
+        <a href="#" style="color:white; text-decoration:none; margin-right:10px;">YouTube</a><br>
+        <a href="#" style="color:white; text-decoration:none; margin-right:10px;">Telegram</a><br>
+        <a href="#" style="color:white; text-decoration:none; margin-right:10px;">X (ancien Twitter)</a>
+      </p>
+    </div>
 
-        btn.addEventListener("click", (e) => {
-            e.stopPropagation();
-            menu.style.display = (menu.style.display === "flex") ? "none" : "flex";
-        });
+    <!-- Mentions légales -->
+    <div style="flex:1 1 250px; margin-bottom:20px;">
+      <h3 style="margin-bottom:10px; font-size:20px;">Mentions légales</h3>
+      <p style="line-height:1.6;">
+        © 2025 AyitiChrono — Tous droits réservés.<br>
+        Les informations publiées restent la propriété de leurs auteurs respectifs.
+      </p>
+    </div>
 
-        document.addEventListener("click", () => {
-            if (menu.style.display === "flex") menu.style.display = "none";
-        });
+  </div>
 
-        menu.addEventListener("click", (e) => e.stopPropagation());
+  <div style="text-align:center; margin-top:20px; font-size:14px; opacity:0.8;">
+    Développé avec passion pour une Haïti mieux informée.
+  </div>
 
-        // SLIDER AUTOMATIQUE
-        let current = 0;
-        const slides = document.querySelectorAll(".slides img");
-
-        setInterval(() => {
-            slides[current].classList.remove("active");
-            current = (current + 1) % slides.length;
-            slides[current].classList.add("active");
-        }, 4000);
-    </script>
+</footer>
 
 </body>
 </html>
