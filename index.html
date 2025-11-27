@@ -1,253 +1,276 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>AyitiChrono</title>
-<style>
-  body {
-    margin: 0;
-    font-family: Arial, sans-serif;
-    background: #f7f7f7;
-  }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AyitiChrono – L’actualité en temps réel</title>
 
-  /* NAVIGATION */
-  .navbar {
-    position: sticky;
-    top: 0;
-    z-index: 1000;
-    background: #003366;
-    color: white;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 15px 25px;
-  }
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, Helvetica, sans-serif;
+            background: #f5f5f5;
+        }
 
-  .logo {
-    font-size: 24px;
-    font-weight: bold;
-  }
+        /* -------------------------------------- */
+        /* BARRE DE NAVIGATION STICKY */
+        /* -------------------------------------- */
+        .topbar {
+            position: sticky;
+            top: 0;
+            z-index: 999;
+            background: #0f7d2e;
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 12px 25px;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+        }
 
-  .categories {
-    display: flex;
-    gap: 20px;
-  }
+        .logo {
+            font-size: 26px;
+            font-weight: bold;
+        }
 
-  .categories a {
-    color: white;
-    text-decoration: none;
-    font-size: 16px;
-  }
+        .desktop-menu a {
+            margin-left: 18px;
+            text-decoration: none;
+            color: white;
+            font-size: 16px;
+        }
 
-  /* MENU DROPDOWN */
-  .menu-btn {
-    cursor: pointer;
-    font-size: 20px;
-    padding: 5px;
-    border: 1px solid white;
-    border-radius: 5px;
-  }
+        .menu-btn {
+            font-size: 30px;
+            cursor: pointer;
+            display: none;
+        }
 
-  .dropdown {
-    position: absolute;
-    top: 60px;
-    right: 20px;
-    background: white;
-    color: black;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    display: none;
-    flex-direction: column;
-    min-width: 180px;
-    box-shadow: 0px 4px 10px rgba(0,0,0,0.2);
-  }
+        .mobile-menu {
+            position: absolute;
+            top: 60px;
+            right: 10px;
+            background: #0f7d2e;
+            padding: 15px;
+            border-radius: 8px;
+            display: none;
+            flex-direction: column;
+            box-shadow: 0 3px 8px rgba(0,0,0,0.3);
+        }
 
-  .dropdown a {
-    padding: 10px;
-    text-decoration: none;
-    color: black;
-    border-bottom: 1px solid #eee;
-  }
+        .mobile-menu a {
+            color: white;
+            padding: 10px 0;
+            text-decoration: none;
+            font-size: 16px;
+        }
 
-  .dropdown a:hover {
-    background: #f2f2f2;
-  }
+        .mobile-menu a:not(:last-child) {
+            border-bottom: 1px solid rgba(255,255,255,0.2);
+        }
 
-  /* HERO SECTION */
-  .hero {
-    height: 350px;
-    position: relative;
-    overflow: hidden;
-  }
+        @media (max-width: 900px) {
+            .desktop-menu {
+                display: none;
+            }
+            .menu-btn {
+                display: block;
+            }
+        }
 
-  .hero img {
-    width: 100%;
-    height: 350px;
-    object-fit: cover;
-    position: absolute;
-    opacity: 0;
-    transition: opacity 1s ease-in-out;
-  }
+        /* -------------------------------------- */
+        /* HERO SLIDER */
+        /* -------------------------------------- */
+        .hero {
+            position: relative;
+            height: 400px;
+            overflow: hidden;
+        }
 
-  .hero img.active {
-    opacity: 1;
-  }
+        .slides img {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            opacity: 0;
+            transition: opacity 1s;
+        }
 
-  /* ARTICLE SECTIONS */
-  .section {
-    padding: 40px 20px;
-  }
+        .slides img.active {
+            opacity: 1;
+        }
 
-  .section h2 {
-    color: #003366;
-  }
+        .hero-text {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: white;
+            text-shadow: 0px 2px 6px rgba(0,0,0,0.7);
+            text-align: center;
+        }
 
-  .cards {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 20px;
-    margin-top: 20px;
-  }
+        /* -------------------------------------- */
+        /* CONTENU */
+        /* -------------------------------------- */
+        .section {
+            padding: 25px;
+        }
 
-  .card {
-    background: white;
-    border-radius: 8px;
-    overflow: hidden;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-  }
+        .section h2 {
+            margin-bottom: 15px;
+            font-size: 28px;
+            border-left: 5px solid #111;
+            padding-left: 10px;
+        }
 
-  .card img {
-    width: 100%;
-    height: 160px;
-    object-fit: cover;
-  }
+        .articles {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 20px;
+        }
 
-  .card-content {
-    padding: 15px;
-  }
+        .card {
+            background: white;
+            padding: 15px;
+            border-radius: 8px;
+            box-shadow: 0 3px 8px rgba(0,0,0,0.1);
+        }
 
-  /* FOOTER */
-  footer {
-    background: #003366;
-    color: white;
-    padding: 30px 20px;
-  }
+        .card img {
+            width: 100%;
+            border-radius: 8px;
+            margin-bottom: 10px;
+        }
 
-  footer a {
-    color: white;
-    text-decoration: none;
-    margin-right: 15px;
-  }
-</style>
+        /* -------------------------------------- */
+        /* FOOTER */
+        /* -------------------------------------- */
+        footer {
+            background: #0f7d2e;
+            color: white;
+            padding: 30px;
+            margin-top: 40px;
+            text-align: center;
+            font-size: 14px;
+        }
+
+        .social a {
+            margin: 0 10px;
+            color: white;
+            font-size: 22px;
+            text-decoration: none;
+        }
+    </style>
 </head>
+
 <body>
 
-<!-- NAVBAR -->
-<div class="navbar">
-  <div class="logo">AyitiChrono</div>
+    <!-- NAVIGATION -->
+    <header class="topbar">
+        <div class="logo">AyitiChrono</div>
 
-  <div class="categories">
-    <a href="#politique">Politique</a>
-    <a href="#economie">Économie</a>
-    <a href="#societe">Société</a>
-    <a href="#culture">Culture</a>
-  </div>
+        <nav class="desktop-menu">
+            <a href="index.html">Accueil</a>
+            <a href="politique.html">Politique</a>
+            <a href="economie.html">Économie</a>
+            <a href="societe.html">Société</a>
+            <a href="international.html">International</a>
+        </nav>
 
-  <div class="menu-btn" id="menuBtn">☰</div>
-</div>
+        <div class="menu-btn" id="menu-btn">☰</div>
 
-<div class="dropdown" id="dropdownMenu">
-  <a href="#politique">Politique</a>
-  <a href="#economie">Économie</a>
-  <a href="#societe">Société</a>
-  <a href="#culture">Culture</a>
-  <a href="#international">International</a>
-  <a href="#sport">Sport</a>
-</div>
+        <nav class="mobile-menu" id="mobile-menu">
+            <a href="index.html">Accueil</a>
+            <a href="politique.html">Politique</a>
+            <a href="economie.html">Économie</a>
+            <a href="societe.html">Société</a>
+            <a href="international.html">International</a>
+        </nav>
+    </header>
 
-<!-- HERO SECTION -->
-<div class="hero">
-  <img src="https://images.unsplash.com/photo-1525909002-1b05e0c869d8" class="active" />
-  <img src="https://images.unsplash.com/photo-1509099836639-18ba1795216d" />
-  <img src="https://images.unsplash.com/photo-1520975918318-3c03f3f3c3f3" />
-</div>
+    <!-- HERO AVEC SLIDER -->
+    <section class="hero">
+        <div class="slides">
+            <img src="https://images.unsplash.com/photo-1549921296-3fd62c9fc2d7?auto=format&fit=crop&w=1600&q=60" class="active">
+            <img src="https://images.unsplash.com/photo-1504711434969-e33886168f5c?auto=format&fit=crop&w=1600&q=60">
+            <img src="https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=1600&q=60">
+        </div>
 
-<!-- SECTIONS -->
-<div class="section" id="politique">
-  <h2>Politique</h2>
-  <div class="cards">
-    <div class="card"><img src="https://images.unsplash.com/photo-1504711434969-e33886168f5c"><div class="card-content">Article politique 1</div></div>
-    <div class="card"><img src="https://images.unsplash.com/photo-1492562080023-ab3db95bfbce"><div class="card-content">Article politique 2</div></div>
-  </div>
-</div>
+        <div class="hero-text">
+            <h1>L’actualité, minute par minute</h1>
+            <p>Un regard clair, rapide et fiable sur l’info en Haïti et dans le monde.</p>
+        </div>
+    </section>
 
-<div class="section" id="economie">
-  <h2>Économie</h2>
-  <div class="cards">
-    <div class="card"><img src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40"><div class="card-content">Article économie 1</div></div>
-    <div class="card"><img src="https://images.unsplash.com/photo-1520607162513-77705c0f0d4a"><div class="card-content">Article économie 2</div></div>
-  </div>
-</div>
+    <!-- SECTIONS AVEC IMAGES LOCALES -->
+    <section class="section">
+        <h2>Actualités</h2>
+        <div class="articles">
 
-<div class="section" id="societe">
-  <h2>Société</h2>
-  <div class="cards">
-    <div class="card"><img src="https://images.unsplash.com/photo-1492725764893-90b379c2b6e7"><div class="card-content">Article société 1</div></div>
-    <div class="card"><img src="https://images.unsplash.com/photo-1520975918318-3c03f3f3c3f3"><div class="card-content">Article société 2</div></div>
-  </div>
-</div>
+            <div class="card">
+                <img src="https://images.unsplash.com/photo-1598515213692-dde6f8e9b41e?auto=format&fit=crop&w=900&q=60">
+                <h3>Titre d’article 1</h3>
+                <p>Résumé rapide de l’information…</p>
+            </div>
 
-<div class="section" id="culture">
-  <h2>Culture</h2>
-  <div class="cards">
-    <div class="card"><img src="https://images.unsplash.com/photo-1529107386315-e1a2ed48a620"><div class="card-content">Article culture 1</div></div>
-    <div class="card"><img src="https://images.unsplash.com/photo-1470225620780-dba8ba36b745"><div class="card-content">Article culture 2</div></div>
-  </div>
-</div>
+            <div class="card">
+                <img src="https://images.unsplash.com/photo-1594007654729-407eedc4ef69?auto=format&fit=crop&w=900&q=60">
+                <h3>Titre d’article 2</h3>
+                <p>Résumé rapide de l’information…</p>
+            </div>
 
-<!-- FOOTER -->
-<footer>
-  <p><strong>Adresse :</strong> 109, Delmas 83, rue Beaubrum, Haïti</p>
-  <p><strong>Contact :</strong> +509 3223-7817 — info@ayitichrono.ht</p>
+            <div class="card">
+                <img src="https://images.unsplash.com/photo-1593435220826-8bcbfbacfea2?auto=format&fit=crop&w=900&q=60">
+                <h3>Titre d’article 3</h3>
+                <p>Résumé rapide de l’information…</p>
+            </div>
 
-  <div>
-    <a href="#">Facebook</a>
-    <a href="#">Instagram</a>
-    <a href="#">TikTok</a>
-    <a href="#">YouTube</a>
-    <a href="#">X</a>
-  </div>
+        </div>
+    </section>
 
-  <p style="margin-top:20px;">© 2025 AyitiChrono — Mentions légales</p>
-</footer>
+    <!-- FOOTER -->
+    <footer>
+        <div><strong>AyitiChrono</strong> – L’actualité en temps réel</div>
 
-<script>
-// HERO IMAGE ROTATION
-let heroIndex = 0;
-const heroImages = document.querySelectorAll('.hero img');
+        <div class="social">
+            <a href="#">📘</a>
+            <a href="#">✖</a>
+            <a href="#">▶️</a>
+            <a href="#">📢</a>
+        </div>
 
-setInterval(() => {
-  heroImages[heroIndex].classList.remove('active');
-  heroIndex = (heroIndex + 1) % heroImages.length;
-  heroImages[heroIndex].classList.add('active');
-}, 3000);
+        <p>Adresse : 109, Delmas 83, rue Beaubrun, Haïti</p>
+        <p>Contact : +509 3223-7817 – ayitichrono@gmail.com</p>
+        <p>Mentions légales – © 2025 AyitiChrono. Tous droits réservés.</p>
+    </footer>
 
-// MENU DROPDOWN
-const menuBtn = document.getElementById('menuBtn');
-const dropdown = document.getElementById('dropdownMenu');
+    <!-- SCRIPT DU MENU + SLIDER -->
+    <script>
+        const btn = document.getElementById("menu-btn");
+        const menu = document.getElementById("mobile-menu");
 
-menuBtn.addEventListener('click', (event) => {
-  event.stopPropagation();
-  dropdown.style.display = dropdown.style.display === 'flex' ? 'none' : 'flex';
-});
+        btn.addEventListener("click", (e) => {
+            e.stopPropagation();
+            menu.style.display = (menu.style.display === "flex") ? "none" : "flex";
+        });
 
-document.addEventListener('click', (event) => {
-  if (!dropdown.contains(event.target) && event.target !== menuBtn) {
-    dropdown.style.display = 'none';
-  }
-});
-</script>
+        document.addEventListener("click", () => {
+            if (menu.style.display === "flex") menu.style.display = "none";
+        });
+
+        menu.addEventListener("click", (e) => e.stopPropagation());
+
+        // SLIDER AUTOMATIQUE
+        let current = 0;
+        const slides = document.querySelectorAll(".slides img");
+
+        setInterval(() => {
+            slides[current].classList.remove("active");
+            current = (current + 1) % slides.length;
+            slides[current].classList.add("active");
+        }, 4000);
+    </script>
 
 </body>
 </html>
