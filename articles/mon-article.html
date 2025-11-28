@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Titre de l’article – AyitiChrono</title>
+  <meta name="description" content="Résumé ou chapo de l’article pour moteurs et réseaux sociaux.">
+
+  <!-- BALISES DE PARTAGE -->
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="Titre de l’article – AyitiChrono">
+  <meta property="og:description" content="Résumé court pour réseaux sociaux.">
+  <meta property="og:image" content="https://ayitichrono.com/images/illustration.jpg">
+  <meta property="og:url" content="https://ayitichrono.com/articles/nom-article.html">
+
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Titre de l’article – AyitiChrono">
+  <meta name="twitter:description" content="Résumé court pour X/Twitter.">
+  <meta name="twitter:image" content="https://ayitichrono.com/images/illustration.jpg">
+
+  <style>
+    body { margin:0; font-family:Arial, sans-serif; background:#f5f5f5; }
+
+    /* Article */
+    article {
+      max-width:900px;
+      margin:auto;
+      background:white;
+      padding:20px;
+      margin-top:30px;
+      border-radius:6px;
+      box-shadow:0 2px 8px rgba(0,0,0,0.1);
+    }
+
+    details summary {
+      font-size:26px;
+      font-weight:bold;
+      cursor:pointer;
+      margin-bottom:15px;
+      list-style:none;
+    }
+    details summary::-webkit-details-marker { display:none; }
+
+    .meta { color:#666; font-size:14px; margin-bottom:20px; }
+
+    img.illustration {
+      max-width:100%;
+      border-radius:6px;
+      margin-bottom:20px;
+    }
+  </style>
+
+  <script>
+    // Date automatique
+    document.addEventListener("DOMContentLoaded", () => {
+      const d = new Date();
+      const options = { year: "numeric", month: "long", day: "numeric" };
+      document.getElementById("date-auto").textContent = d.toLocaleDateString("fr-FR", options);
+    });
+
+    // Menu mobile
+    document.addEventListener("DOMContentLoaded", () => {
+      const btn = document.getElementById("menu-btn");
+      const menu = document.getElementById("mobile-menu");
+      btn.addEventListener("click", () => {
+        menu.classList.toggle("open");
+      });
+    });
+  </script>
+</head>
+
+<body>
+
+<!-- ====== HEADER STANDARD ====== -->
+<header class="topbar">
+  <div style="display:flex;align-items:center;gap:12px">
+    <div class="logo">AyitiChrono</div>
+  </div>
+
+  <nav class="desktop-menu" aria-label="Menu principal">
+    <a href="/index.html">Accueil</a>
+    <a href="/politique.html">Politique</a>
+    <a href="/economie.html">Économie</a>
+    <a href="/societe.html">Société</a>
+    <a href="/international.html">International</a>
+  </nav>
+
+  <button id="menu-btn" class="menu-btn" aria-label="Ouvrir le menu">☰</button>
+  <nav id="mobile-menu" class="mobile-menu" aria-hidden="true">
+    <a href="/index.html">Accueil</a>
+    <a href="/politique.html">Politique</a>
+    <a href="/economie.html">Économie</a>
+    <a href="/societe.html">Société</a>
+    <a href="/international.html">International</a>
+    <a href="/contact.html">Contact</a>
+  </nav>
+</header>
+<!-- ============================ -->
+
+<article>
+
+  <img class="illustration" src="/images/illustration.jpg" alt="Illustration">
+
+  <div class="meta">
+    Publié le <span id="date-auto"></span> — Par Rédaction AyitiChrono
+  </div>
+
+  <details open>
+    <summary>Titre de l’article — Cliquez pour déployer</summary>
+
+    <p>Premier paragraphe de ton article...</p>
+    <p>Deuxième paragraphe...</p>
+    <p>Troisième paragraphe...</p>
+
+  </details>
+
+  <!-- BOUTONS DE PARTAGE -->
+  <div style="margin-top:25px; display:flex; gap:10px; flex-wrap:wrap;">
+    <a href="https://www.facebook.com/sharer/sharer.php?u=https://ayitichrono.com/articles/nom-article.html"
+       target="_blank"
+       style="padding:10px 15px; background:#1877f2; color:white; border-radius:4px; text-decoration:none;">
+       Partager sur Facebook
+    </a>
+
+    <a href="https://x.com/intent/tweet?url=https://ayitichrono.com/articles/nom-article.html"
+       target="_blank"
+       style="padding:10px 15px; background:black; color:white; border-radius:4px; text-decoration:none;">
+       Partager sur X
+    </a>
+
+    <a href="mailto:?subject=AyitiChrono - Article&body=Voici un article intéressant : https://ayitichrono.com/articles/nom-article.html"
+       style="padding:10px 15px; background:#666; color:white; border-radius:4px; text-decoration:none;">
+       Envoyer par Email
+    </a>
+  </div>
+
+</article>
+
+<!-- ====== FOOTER STANDARD ====== -->
+<footer style="
+  background:#0a3d0a;
+  color:white;
+  padding:40px 20px;
+  margin-top:60px;
+  font-family:Arial, sans-serif;
+">
+
+  <div style="max-width:1200px; margin:auto; display:flex; flex-wrap:wrap; justify-content:space-between;">
+
+    <!-- À propos -->
+    <div style="flex:1 1 250px; margin-bottom:20px;">
+      <h3 style="margin-bottom:10px; font-size:20px;">À propos</h3>
+      <p style="line-height:1.6;">
+        AyitiChrono est un média en ligne indépendant qui offre une information rapide, fiable et structurée sur l’actualité nationale et internationale.
+      </p>
+    </div>
+
+    <!-- Contact -->
+    <div style="flex:1 1 250px; margin-bottom:20px;">
+      <h3 style="margin-bottom:10px; font-size:20px;">Contact</h3>
+      <p style="line-height:1.6;">Adresse : 109, Delmas 83, rue Beaubrun, Haïti</p>
+      <p>Email : contact@ayitichrono.com</p>
+    </div>
+
+    <!-- Réseaux sociaux -->
+    <div style="flex:1 1 250px; margin-bottom:20px;">
+      <h3 style="margin-bottom:10px; font-size:20px;">Nous suivre</h3>
+      <p>
+        <a href="#" style="color:white; text-decoration:none;">Facebook</a><br>
+        <a href="#" style="color:white; text-decoration:none;">YouTube</a><br>
+        <a href="#" style="color:white; text-decoration:none;">Telegram</a><br>
+        <a href="#" style="color:white; text-decoration:none;">X (Twitter)</a>
+      </p>
+    </div>
+
+    <!-- Mentions légales -->
+    <div style="flex:1 1 250px; margin-bottom:20px;">
+      <h3 style="margin-bottom:10px; font-size:20px;">Mentions légales</h3>
+      <p style="line-height:1.6;">
+        © 2025 AyitiChrono — Tous droits réservés.<br>
+        Les informations publiées restent la propriété de leurs auteurs respectifs.
+      </p>
+    </div>
+
+  </div>
+
+  <div style="text-align:center; margin-top:20px; font-size:14px; opacity:0.8;">
+    Développé avec passion pour une Haïti mieux informée.
+  </div>
+
+</footer>
+<!-- =============================== -->
+
+</body>
+</html>
