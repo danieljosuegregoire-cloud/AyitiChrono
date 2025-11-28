@@ -31,5 +31,31 @@
   </section>
 
   <footer>© 2025 AyitiChrono – Tous droits réservés.</footer>
+
+<script>
+const categorie = "politique"; // À changer pour chaque page : politique, economie, societe, international
+const container = document.querySelector(".articles-list");
+
+fetch("/articles.json")
+  .then(response => response.json())
+  .then(data => {
+    if(data[categorie]){
+      data[categorie].forEach(article => {
+        const card = document.createElement("article");
+        card.classList.add("article-card");
+        card.innerHTML = `
+          <a href="${article.url}">
+            <img src="${article.image}" alt="${article.title}">
+            <h2>${article.title}</h2>
+            <p>${article.summary}</p>
+          </a>
+        `;
+        container.appendChild(card);
+      });
+    }
+  })
+  .catch(err => console.error("Erreur lors du chargement des articles :", err));
+</script>
+
 </body>
 </html>
