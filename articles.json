@@ -1,0 +1,40 @@
+{
+  "politique": [
+    {
+      "title": "Crise politique au Parlement",
+      "image": "/images/articles/politique/crise-parlement.jpg",
+      "url": "/articles/politique/crise-parlement.html",
+      "summary": "Analyse de la séance du Parlement et des tensions actuelles."
+    },
+    {
+      "title": "Élections locales : tout ce qu’il faut savoir",
+      "image": "/images/articles/politique/elections-locales.jpg",
+      "url": "/articles/politique/elections-locales.html",
+      "summary": "Calendrier, candidats et enjeux des élections locales."
+    }
+  ],
+  "economie": [
+    {
+      "title": "Inflation en hausse",
+      "image": "/images/articles/economie/inflation.jpg",
+      "url": "/articles/economie/inflation.html",
+      "summary": "Les impacts sur les ménages et les entreprises en Haïti."
+    }
+  ],
+  "societe": [
+    {
+      "title": "Nouvelle loi sur l’éducation",
+      "image": "/images/articles/societe/education.jpg",
+      "url": "/articles/societe/education.html",
+      "summary": "Ce que cette réforme change pour les écoles et les étudiants."
+    }
+  ],
+  "international": [
+    {
+      "title": "Sommet mondial sur le climat",
+      "image": "/images/articles/international/climat.jpg",
+      "url": "/articles/international/climat.html",
+      "summary": "Décisions et implications pour Haïti et le monde."
+    }
+  ]
+}
