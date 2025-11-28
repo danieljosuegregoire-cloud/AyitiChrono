@@ -1,286 +1,234 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AyitiChrono – L’actualité en temps réel</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>AyitiChrono – L’actualité en temps réel</title>
+  <meta name="description" content="AyitiChrono — Actualité haïtienne et internationale : analyses, reportages et faits en temps réel.">
+  <!-- Open Graph pour un meilleur partage -->
+  <meta property="og:title" content="Les États-Unis réexaminent la résidence permanente pour des citoyens de 19 pays, dont Haïti">
+  <meta property="og:description" content="L'administration américaine lance un réexamen des cartes vertes pour ressortissants de 19 pays — entre autres conséquences politiques et humanitaires.">
+  <meta property="og:image" content="/images/residence-permanente.jpg">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://ayitichrono.com/">
 
-    <style>
-        body {
-            margin: 0;
-            font-family: Arial, Helvetica, sans-serif;
-            background: #f5f5f5;
-        }
-
-        /* -------------------------------------- */
-        /* BARRE DE NAVIGATION STICKY */
-        /* -------------------------------------- */
-        .topbar {
-            position: sticky;
-            top: 0;
-            z-index: 999;
-            background: #0f7d2e;
-            color: white;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            padding: 12px 25px;
-            box-shadow: 0 2px 6px rgba(0,0,0,0.2);
-        }
-
-        .logo {
-            font-size: 26px;
-            font-weight: bold;
-        }
-
-        .desktop-menu a {
-            margin-left: 18px;
-            text-decoration: none;
-            color: white;
-            font-size: 16px;
-        }
-
-        .menu-btn {
-            font-size: 30px;
-            cursor: pointer;
-            display: none;
-        }
-
-        .mobile-menu {
-            position: absolute;
-            top: 60px;
-            right: 10px;
-            background: #0f7d2e;
-            padding: 15px;
-            border-radius: 8px;
-            display: none;
-            flex-direction: column;
-            box-shadow: 0 3px 8px rgba(0,0,0,0.3);
-        }
-
-        .mobile-menu a {
-            color: white;
-            padding: 10px 0;
-            text-decoration: none;
-            font-size: 16px;
-        }
-
-        .mobile-menu a:not(:last-child) {
-            border-bottom: 1px solid rgba(255,255,255,0.2);
-        }
-
-        @media (max-width: 900px) {
-            .desktop-menu {
-                display: none;
-            }
-            .menu-btn {
-                display: block;
-            }
-        }
-
-        /* -------------------------------------- */
-        /* HERO SLIDER */
-        /* -------------------------------------- */
-        .hero {
-            position: relative;
-            height: 400px;
-            overflow: hidden;
-        }
-
-        .slides img {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            opacity: 0;
-            transition: opacity 1s;
-        }
-
-        .slides img.active {
-            opacity: 1;
-        }
-
-        .hero-text {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            color: white;
-            text-shadow: 0px 2px 6px rgba(0,0,0,0.7);
-            text-align: center;
-        }
-
-        /* -------------------------------------- */
-        /* CONTENU */
-        /* -------------------------------------- */
-        .section {
-            padding: 25px;
-        }
-
-        .section h2 {
-            margin-bottom: 15px;
-            font-size: 28px;
-            border-left: 5px solid #111;
-            padding-left: 10px;
-        }
-
-        .articles {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-            gap: 20px;
-        }
-
-        .card {
-            background: white;
-            padding: 15px;
-            border-radius: 8px;
-            box-shadow: 0 3px 8px rgba(0,0,0,0.1);
-        }
-
-        .card img {
-            width: 100%;
-            border-radius: 8px;
-            margin-bottom: 10px;
-        }
-
-        /* -------------------------------------- */
-        /* FOOTER */
-        /* -------------------------------------- */
-        footer {
-            background: #0f7d2e;
-            color: white;
-            padding: 30px;
-            margin-top: 40px;
-            text-align: center;
-            font-size: 14px;
-        }
-
-        .social a {
-            margin: 0 10px;
-            color: white;
-            font-size: 22px;
-            text-decoration: none;
-        }
-    </style>
+  <style>
+    :root{
+      --brand-blue:#003366;
+      --brand-green:#0f7d2e;
+      --accent:#ffcc00;
+      --text:#222;
+      --muted:#777;
+    }
+    *{box-sizing:border-box}
+    body{margin:0;font-family:Arial,Helvetica,sans-serif;color:var(--text);background:#f6f6f6;line-height:1.5}
+    /* TOPBAR */
+    .topbar{
+      position:sticky;top:0;z-index:999;
+      background:var(--brand-green);
+      color:white;display:flex;align-items:center;justify-content:space-between;
+      padding:12px 20px;box-shadow:0 2px 6px rgba(0,0,0,0.12);
+    }
+    .logo{font-weight:700;font-size:22px;letter-spacing:0.5px}
+    /* desktop menu */
+    .desktop-menu{display:flex;gap:18px;align-items:center}
+    .desktop-menu a{color:white;text-decoration:none;font-size:15px;padding:6px 8px;border-radius:4px}
+    .desktop-menu a:hover{background:rgba(255,255,255,0.06)}
+    /* hamburger */
+    .menu-btn{display:none;font-size:26px;cursor:pointer;background:none;border:none;color:white}
+    /* mobile dropdown */
+    .mobile-menu{
+      position:absolute;right:12px;top:56px;background:var(--brand-green);padding:12px;border-radius:8px;
+      display:none;flex-direction:column;min-width:200px;box-shadow:0 6px 18px rgba(0,0,0,0.18);
+    }
+    .mobile-menu a{color:white;padding:10px 8px;text-decoration:none;border-bottom:1px solid rgba(255,255,255,0.06)}
+    .mobile-menu a:last-child{border-bottom:none}
+    /* hero */
+    .hero{position:relative;height:360px;overflow:hidden;background:#ddd}
+    .slides img{position:absolute;left:0;top:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity .9s}
+    .slides img.active{opacity:1}
+    .hero-text{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);color:white;text-align:center;text-shadow:0 3px 10px rgba(0,0,0,0.5);padding:0 20px}
+    .hero-text h1{margin:0;font-size:34px}
+    .hero-text p{margin:8px 0 0;font-size:16px;color:#f0f0f0}
+    /* container & layout */
+    .container{max-width:1100px;margin:0 auto;padding:20px}
+    .section{padding:26px 0}
+    .article{background:white;padding:20px;border-radius:8px;box-shadow:0 3px 10px rgba(0,0,0,0.05)}
+    .article h1{margin:0 0 10px;font-size:24px}
+    .meta{color:var(--muted);font-size:14px;margin-bottom:14px}
+    .hero-figure{width:100%;border-radius:8px;overflow:hidden;margin-bottom:14px}
+    .hero-figure img{width:100%;display:block;height:380px;object-fit:cover}
+    /* cards */
+    .articles-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:18px}
+    .card{background:white;border-radius:8px;padding:12px;box-shadow:0 3px 8px rgba(0,0,0,0.06)}
+    .card img{width:100%;height:150px;object-fit:cover;border-radius:6px}
+    /* footer */
+    footer{background:var(--brand-blue);color:white;padding:28px 20px;margin-top:36px}
+    .footer-grid{max-width:1100px;margin:0 auto;display:flex;flex-wrap:wrap;gap:20px;justify-content:space-between}
+    .footer-col{min-width:200px;flex:1}
+    .footer-col h3{color:var(--accent);margin-top:0}
+    .footer-bottom{text-align:center;margin-top:18px;color:rgba(255,255,255,0.9)}
+    /* responsive */
+    @media(max-width:900px){
+      .desktop-menu{display:none}
+      .menu-btn{display:block}
+      .hero-text h1{font-size:26px}
+      .hero-figure img{height:220px}
+    }
+  </style>
 </head>
-
 <body>
 
-    <!-- NAVIGATION -->
-    <header class="topbar">
-        <div class="logo">AyitiChrono</div>
+  <!-- TOPBAR -->
+  <header class="topbar">
+    <div style="display:flex;align-items:center;gap:12px">
+      <div class="logo">AyitiChrono</div>
+    </div>
 
-        <nav class="desktop-menu">
-            <a href="index.html">Accueil</a>
-            <a href="politique.html">Politique</a>
-            <a href="economie.html">Économie</a>
-            <a href="societe.html">Société</a>
-            <a href="international.html">International</a>
-        </nav>
+    <nav class="desktop-menu" aria-label="Menu principal">
+      <a href="/index.html">Accueil</a>
+      <a href="/politique.html">Politique</a>
+      <a href="/economie.html">Économie</a>
+      <a href="/societe.html">Société</a>
+      <a href="/international.html">International</a>
+    </nav>
 
-        <div class="menu-btn" id="menu-btn">☰</div>
+    <button id="menu-btn" class="menu-btn" aria-label="Ouvrir le menu">☰</button>
+    <nav id="mobile-menu" class="mobile-menu" aria-hidden="true">
+      <a href="/index.html">Accueil</a>
+      <a href="/politique.html">Politique</a>
+      <a href="/economie.html">Économie</a>
+      <a href="/societe.html">Société</a>
+      <a href="/international.html">International</a>
+      <a href="/contact.html">Contact</a>
+    </nav>
+  </header>
 
-        <nav class="mobile-menu" id="mobile-menu">
-            <a href="index.html">Accueil</a>
-            <a href="politique.html">Politique</a>
-            <a href="economie.html">Économie</a>
-            <a href="societe.html">Société</a>
-            <a href="international.html">International</a>
-        </nav>
-    </header>
+  <!-- HERO -->
+  <section class="hero" role="banner">
+    <div class="slides" aria-hidden="true">
+      <img src="https://images.unsplash.com/photo-1549921296-3fd62c9fc2d7?auto=format&fit=crop&w=1600&q=60" class="active" alt="">
+      <img src="https://images.unsplash.com/photo-1504711434969-e33886168f5c?auto=format&fit=crop&w=1600&q=60" alt="">
+      <img src="https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=1600&q=60" alt="">
+    </div>
+    <div class="hero-text">
+      <h1>L’actualité, minute par minute</h1>
+      <p>Un regard clair, rapide et fiable sur l’info en Haïti et dans le monde.</p>
+    </div>
+  </section>
 
-    <!-- HERO AVEC SLIDER -->
-    <section class="hero">
-        <div class="slides">
-            <img src="https://images.unsplash.com/photo-1549921296-3fd62c9fc2d7?auto=format&fit=crop&w=1600&q=60" class="active">
-            <img src="https://images.unsplash.com/photo-1504711434969-e33886168f5c?auto=format&fit=crop&w=1600&q=60">
-            <img src="https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=1600&q=60">
-        </div>
+  <main class="container">
 
-        <div class="hero-text">
-            <h1>L’actualité, minute par minute</h1>
-            <p>Un regard clair, rapide et fiable sur l’info en Haïti et dans le monde.</p>
-        </div>
-    </section>
-
-    <!-- SECTIONS AVEC IMAGES LOCALES -->
+    <!-- ARTICLE PRINCIPAL (avec date+heure + illustration + signature) -->
     <section class="section">
-        <h2>Actualités</h2>
-        <div class="articles">
+      <article class="article">
+        <h1>Les États-Unis réexaminent la résidence permanente pour les citoyens de 19 pays, dont Haïti</h1>
 
-            <div class="card">
-                <img src="https://images.unsplash.com/photo-1598515213692-dde6f8e9b41e?auto=format&fit=crop&w=900&q=60">
-                <h3>Titre d’article 1</h3>
-                <p>Résumé rapide de l’information…</p>
-            </div>
-
-            <div class="card">
-                <img src="https://images.unsplash.com/photo-1594007654729-407eedc4ef69?auto=format&fit=crop&w=900&q=60">
-                <h3>Titre d’article 2</h3>
-                <p>Résumé rapide de l’information…</p>
-            </div>
-
-            <div class="card">
-                <img src="https://images.unsplash.com/photo-1593435220826-8bcbfbacfea2?auto=format&fit=crop&w=900&q=60">
-                <h3>Titre d’article 3</h3>
-                <p>Résumé rapide de l’information…</p>
-            </div>
-
+        <div class="meta" id="meta-article">
+          Publié le <time id="publish-datetime" datetime="">--</time> — Par Etienne VILFORT, pour la Rédaction
         </div>
+
+        <figure class="hero-figure">
+          <!-- IMPORTANT : uploade ton image dans /images/residence-permanente.jpg -->
+          <img src="/images/residence-permanente.jpg" alt="Capitole et carte verte — illustration">
+        </figure>
+
+        <p>L’administration Trump va réexaminer la procédure d’obtention de la résidence permanente pour les citoyens de 19 pays, dont Haïti, l’Iran, Cuba, le Venezuela et la Somalie. « La protection des Américains reste primordiale, et ils ne peuvent plus supporter les conséquences des politiques de réinstallation irresponsables de l’administration précédente », a déclaré Joseph Edlow, directeur du service de la Citoyenneté et de l’Immigration (USCIS).</p>
+
+        <p>Cette annonce intervient quelques jours après que l’administration Trump a mis fin au statut TPS pour les ressortissants haïtiens.</p>
+
+        <p>Entre-temps, le gouvernement américain continue d’imposer ses politiques et sa volonté aux membres du Conseil présidentiel, tout en menaçant de sanctionner ceux qui tenteraient de lui résister.</p>
+
+      </article>
     </section>
 
-    <footer style="
-  background:#0a3d0a;
-  color:white;
-  padding:40px 20px;
-  margin-top:60px;
-  font-family:Arial, sans-serif;
-">
+    <!-- EXEMPLES D'AUTRES SECTIONS -->
+    <section class="section">
+      <h2>Actualités</h2>
+      <div class="articles-grid">
+        <div class="card"><img src="https://images.unsplash.com/photo-1523875194681-bedd468c58bf?auto=format&fit=crop&w=900&q=60" alt=""><h3>Titre 1</h3><p class="meta">Résumé…</p></div>
+        <div class="card"><img src="https://images.unsplash.com/photo-1507842217343-583bb7270b66?auto=format&fit=crop&w=900&q=60" alt=""><h3>Titre 2</h3><p class="meta">Résumé…</p></div>
+        <div class="card"><img src="https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?auto=format&fit=crop&w=900&q=60" alt=""><h3>Titre 3</h3><p class="meta">Résumé…</p></div>
+      </div>
+    </section>
 
-  <div style="max-width:1200px; margin:auto; display:flex; flex-wrap:wrap; justify-content:space-between;">
+  </main>
 
-    <!-- À propos -->
-    <div style="flex:1 1 250px; margin-bottom:20px;">
-      <h3 style="margin-bottom:10px; font-size:20px;">À propos</h3>
-      <p style="line-height:1.6;">
-        AyitiChrono est un média en ligne indépendant qui offre une information rapide, fiable et structurée sur l’actualité nationale et internationale.
-      </p>
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-grid">
+      <div class="footer-col">
+        <h3>À propos</h3>
+        <p>AyitiChrono est un média en ligne indépendant dédié à l’information haïtienne et internationale.</p>
+      </div>
+      <div class="footer-col">
+        <h3>Contact</h3>
+        <p>Adresse : 109, Delmas 83, rue Beaubrun, Haïti</p>
+        <p>Email : <a href="mailto:redaction@ayitichrono.ht" style="color:#ffcc00">redaction@ayitichrono.ht</a></p>
+      </div>
+      <div class="footer-col">
+        <h3>Nous suivre</h3>
+        <p><a href="#" style="color:white">Facebook</a> — <a href="#" style="color:white">X</a> — <a href="#" style="color:white">YouTube</a></p>
+      </div>
     </div>
+    <div class="footer-bottom">© 2025 AyitiChrono — Mentions légales — Tous droits réservés</div>
+  </footer>
 
-    <!-- Contact -->
-    <div style="flex:1 1 250px; margin-bottom:20px;">
-      <h3 style="margin-bottom:10px; font-size:20px;">Contact</h3>
-      <p style="line-height:1.6;">Adresse : 109, Delmas 83, rue Beaubrun, Haïti</p>
-      <p>Email : contact@ayitichrono.com</p>
-    </div>
+  <!-- SCRIPTS -->
+  <script>
+    // 1) Menu mobile : toggle + fermer en cliquant ailleurs
+    (function(){
+      const btn = document.getElementById('menu-btn');
+      const menu = document.getElementById('mobile-menu');
 
-    <!-- Réseaux sociaux -->
-    <div style="flex:1 1 250px; margin-bottom:20px;">
-      <h3 style="margin-bottom:10px; font-size:20px;">Nous suivre</h3>
-      <p>
-        <a href="#" style="color:white; text-decoration:none; margin-right:10px;">Facebook</a><br>
-        <a href="#" style="color:white; text-decoration:none; margin-right:10px;">YouTube</a><br>
-        <a href="#" style="color:white; text-decoration:none; margin-right:10px;">Telegram</a><br>
-        <a href="#" style="color:white; text-decoration:none; margin-right:10px;">X (ancien Twitter)</a>
-      </p>
-    </div>
+      function showMenu(){
+        menu.style.display = 'flex';
+        menu.setAttribute('aria-hidden','false');
+      }
+      function hideMenu(){
+        menu.style.display = 'none';
+        menu.setAttribute('aria-hidden','true');
+      }
 
-    <!-- Mentions légales -->
-    <div style="flex:1 1 250px; margin-bottom:20px;">
-      <h3 style="margin-bottom:10px; font-size:20px;">Mentions légales</h3>
-      <p style="line-height:1.6;">
-        © 2025 AyitiChrono — Tous droits réservés.<br>
-        Les informations publiées restent la propriété de leurs auteurs respectifs.
-      </p>
-    </div>
+      btn.addEventListener('click', function(e){
+        e.stopPropagation();
+        if(menu.style.display === 'flex'){
+          hideMenu();
+        } else {
+          showMenu();
+        }
+      });
 
-  </div>
+      // Empêche fermeture si on clique à l'intérieur
+      menu.addEventListener('click', function(e){ e.stopPropagation(); });
 
-  <div style="text-align:center; margin-top:20px; font-size:14px; opacity:0.8;">
-    Développé avec passion pour une Haïti mieux informée.
-  </div>
+      // Ferme si on clique ailleurs
+      document.addEventListener('click', function(){ hideMenu(); });
+      // Ferme aussi à l'échapp
+      document.addEventListener('keydown', function(e){ if(e.key === 'Escape') hideMenu(); });
+    })();
 
-</footer>
+    // 2) Slider hero
+    (function(){
+      let idx = 0;
+      const slides = document.querySelectorAll('.slides img');
+      if(slides.length > 1){
+        setInterval(function(){
+          slides[idx].classList.remove('active');
+          idx = (idx + 1) % slides.length;
+          slides[idx].classList.add('active');
+        }, 3500);
+      }
+    })();
 
+    // 3) Date / heure de publication automatique (tu peux remplacer la valeur si tu veux une date fixe)
+    (function(){
+      const dt = new Date();
+      const opts = { year:'numeric', month:'long', day:'numeric', hour:'2-digit', minute:'2-digit' };
+      const s = dt.toLocaleString('fr-FR', opts);
+      document.getElementById('publish-datetime').textContent = s;
+      document.getElementById('publish-datetime').setAttribute('datetime', dt.toISOString());
+    })();
+  </script>
 </body>
 </html>
