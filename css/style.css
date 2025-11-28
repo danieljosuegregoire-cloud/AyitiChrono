@@ -34,13 +34,13 @@ header{
   font-size:28px;
   font-weight:700;
   color:#111;
-  text-transform:none;
+  text-transform:none; /* clé : ne pas forcer les majuscules */
   letter-spacing:0.4px;
 }
 
 /* Nav */
 nav{
-  background:var(--vert);
+  background:var(--vert); /* barre verte */
   padding:10px 25px;
 }
 
@@ -77,29 +77,6 @@ nav a:hover{
 .hero p{
   font-size:18px;
   margin-top:10px;
-}
-
-/* === SLIDER HERO — CSS AJOUTÉ === */
-.slides {
-  position: relative;
-  width: 100%;
-  height: 380px;
-  overflow: hidden;
-}
-
-.slides img {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  opacity: 0;
-  transition: opacity 1s ease-in-out;
-}
-
-.slides img.active {
-  opacity: 1;
 }
 
 /* Sections/articles */
