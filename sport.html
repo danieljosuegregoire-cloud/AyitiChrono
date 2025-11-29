@@ -4,102 +4,59 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <title>AyitiChrono – Sport</title>
+
+  <!-- CSS GLOBAL -->
   <link rel="stylesheet" href="css/style.css">
+
+  <!-- Icônes Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" crossorigin="anonymous">
 </head>
 <body>
 
+<!-- ===================== HEADER ===================== -->
 <div id="header-container"></div>
 
-<section class="section">
-  <h2>Sport</h2>
-  <div class="articles">
-    <div class="card">
-      <h3>Actualités sportives</h3>
-      <p>Les résultats, classements et performances qui marquent l’actualité sportive...</p>
-    </div>
-    <div class="card">
-      <h3>Sports haïtiens</h3>
-      <p>Focus sur les athlètes et équipes d’Haïti qui se distinguent...</p>
-    </div>
-  </div>
-</section>
+<!-- ===================== CONTENU ===================== -->
+<main class="section">
+  <h1>Actualité – Sport</h1>
 
-  <div id="footer-container"></div>
-
-<script>
-  fetch("header.html")
-    .then(res => res.text())
-    .then(data => document.getElementById("header").innerHTML = data);
-
-  fetch("footer.html")
-    .then(res => res.text())
-    .then(data => document.getElementById("footer").innerHTML = data);
-</script>
-
-<!DOCTYPE html>
-<html lang="fr">
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1">
-  <title>AyitiChrono – International</title>
-  <link rel="stylesheet" href="css/style.css">
-</head>
-<body>
-
-  <!-- Header injecté -->
-  <div id="header-container"></div>
-
-  <!-- Contenu principal -->
-  <section class="section">
-    <h2>International</h2>
-    <div class="articles-list">
-      <div class="card">
-        <h3>Événements mondiaux</h3>
-        <p>Résumé des actualités internationales les plus importantes...</p>
-      </div>
-      <div class="card">
-        <h3>Relations diplomatiques</h3>
-        <p>Les relations entre Haïti et d’autres pays se renforcent...</p>
-      </div>
-    </div>
+  <section class="articles">
+    <div class="articles-list"></div>
   </section>
+</main>
 
-  <!-- Footer injecté -->
-  <div id="footer-container"></div>
+<!-- ===================== FOOTER ===================== -->
+<div id="footer-container"></div>
 
-  <!-- Script pour charger les articles dynamiquement -->
-  <script>
-    const categorie = "international"; // correspond à cette page
-    const container = document.querySelector(".articles-list");
+<!-- ===================== CHARGEMENT HEADER + FOOTER ===================== -->
+<script src="js/header.js"></script>
 
-    fetch("/articles.json")
-      .then(response => response.json())
-      .then(data => {
-        if(data[categorie]){
-          data[categorie].forEach(article => {
-            const card = document.createElement("article");
-            card.classList.add("article-card");
-            card.innerHTML = `
-              <a href="${article.url}">
-                <img src="${article.image}" alt="${article.title}">
-                <h2>${article.title}</h2>
-                <p>${article.summary}</p>
-              </a>
-            `;
-            container.appendChild(card);
-          });
-        }
-      })
-      .catch(err => console.error("Erreur lors du chargement des articles :", err));
-  </script>
+<!-- ===================== CHARGEMENT DYNAMIQUE DES ARTICLES ===================== -->
+<script>
+const categorie = "sport"; 
+const container = document.querySelector(".articles-list");
 
-  <!-- Script pour injecter header & footer -->
-  <script src="load-header-footer.js"></script>
+fetch("articles.json")
+  .then(response => response.json())
+  .then(data => {
+    if (data[categorie]) {
+      data[categorie].forEach(article => {
+        const card = document.createElement("div");
+        card.classList.add("card");
 
-<script src="header.js"></script>
-
-</body>
-</html>
+        card.innerHTML = `
+          <a href="${article.url}">
+            <img src="${article.image}" alt="${article.title}" style="width:100%;border-radius:6px;">
+            <h2>${article.title}</h2>
+            <p>${article.summary}</p>
+          </a>
+        `;
+        container.appendChild(card);
+      });
+    }
+  })
+  .catch(err => console.error("Erreur lors du chargement des articles :", err));
+</script>
 
 </body>
 </html>
