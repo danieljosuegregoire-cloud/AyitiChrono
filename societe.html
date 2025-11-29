@@ -4,56 +4,60 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <title>AyitiChrono – Société</title>
+
+  <!-- CSS GLOBAL -->
   <link rel="stylesheet" href="css/style.css">
+
+  <!-- Icônes Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" crossorigin="anonymous">
 </head>
 <body>
 
+<!-- ===================== HEADER ===================== -->
 <div id="header-container"></div>
 
-  <section class="section">
-    <h2>Société</h2>
-    <div class="articles">
-      <div class="card">
-        <h3>Événements culturels à Port-au-Prince</h3>
-        <p>Des festivals et expositions sont organisés ce mois-ci dans la capitale...</p>
-      </div>
-      <div class="card">
-        <h3>Initiatives sociales locales</h3>
-        <p>Des ONG lancent des programmes pour améliorer la vie des habitants...</p>
-      </div>
-    </div>
+<!-- ===================== CONTENU ===================== -->
+<main class="section">
+  <h1>Actualité – Société</h1>
+
+  <section class="articles">
+    <div class="articles-list"></div>
   </section>
+</main>
 
-  <div id="footer-container"></div>
+<!-- ===================== FOOTER ===================== -->
+<div id="footer-container"></div>
 
+<!-- ===================== JS CHARGEMENT HEADER + FOOTER ===================== -->
+<script src="js/header.js"></script>
+
+<!-- ===================== JS ARTICLES SOCIÉTÉ ===================== -->
 <script>
-const categorie = "politique"; // À changer pour chaque page : politique, economie, societe, international
+const categorie = "societe";  // catégorie correcte pour cette page
 const container = document.querySelector(".articles-list");
 
-fetch("/articles.json")
+fetch("articles.json")
   .then(response => response.json())
   .then(data => {
-    if(data[categorie]){
+    if (data[categorie]) {
       data[categorie].forEach(article => {
-        const card = document.createElement("article");
-        card.classList.add("article-card");
+        const card = document.createElement("div");
+        card.classList.add("card");
+
         card.innerHTML = `
           <a href="${article.url}">
-            <img src="${article.image}" alt="${article.title}">
+            <img src="${article.image}" alt="${article.title}" style="width:100%;border-radius:6px;">
             <h2>${article.title}</h2>
             <p>${article.summary}</p>
           </a>
         `;
+
         container.appendChild(card);
       });
     }
   })
   .catch(err => console.error("Erreur lors du chargement des articles :", err));
 </script>
-
-<script src="load-header-footer.js"></script>
-
-<script src="header.js"></script>
 
 </body>
 </html>
