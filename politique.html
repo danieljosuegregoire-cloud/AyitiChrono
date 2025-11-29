@@ -7,39 +7,14 @@
 
   <!-- CSS GLOBAL -->
   <link rel="stylesheet" href="css/style.css">
+
+  <!-- Font Awesome pour les icônes réseaux sociaux -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 <body>
 
 <!-- ===================== HEADER ===================== -->
-<header class="topbar">
-  <div style="display:flex;align-items:center;gap:12px">
-    <div class="logo">AyitiChrono</div>
-  </div>
-
-  <nav class="desktop-menu" aria-label="Menu principal">
-    <a href="index.html">Accueil</a>
-    <a href="politique.html" class="active">Politique</a>
-    <a href="economie.html">Économie</a>
-    <a href="societe.html">Société</a>
-    <a href="international.html">International</a>
-    <a href="sport.html">Sport</a>
-    <a href="culture.html">Culture</a>
-    <a href="technologie.html">Technologie</a>
-  </nav>
-
-  <button id="menu-btn" class="menu-btn" aria-label="Ouvrir le menu">☰</button>
-
-  <nav id="mobile-menu" class="mobile-menu" aria-hidden="true">
-    <a href="index.html">Accueil</a>
-    <a href="politique.html">Politique</a>
-    <a href="economie.html">Économie</a>
-    <a href="societe.html">Société</a>
-    <a href="international.html">International</a>
-    <a href="sport.html">Sport</a>
-    <a href="culture.html">Culture</a>
-    <a href="technologie.html">Technologie</a>
-  </nav>
-</header>
+<div id="header-placeholder"></div>
 
 <!-- ===================== CONTENU ===================== -->
 <main class="section">
@@ -51,47 +26,13 @@
 </main>
 
 <!-- ===================== FOOTER ===================== -->
-<footer class="footer">
-  <div class="footer-content">
+<div id="footer-placeholder"></div>
 
-    <div class="footer-block">
-      <h3>À propos</h3>
-      <p>AyitiChrono est un média indépendant offrant une information rapide, fiable et structurée pour tous.</p>
-    </div>
+<!-- ===================== JS INCLUS ===================== -->
+<script src="js/header.js"></script> <!-- charge header et footer -->
 
-    <div class="footer-block">
-      <h3>Contact</h3>
-      <p>Adresse : Delmas 83, Rue Beaubrun, Haïti<br>
-         Email : contact@ayitichrono.com
-      </p>
-    </div>
-
-    <div class="footer-block">
-      <h3>Nous suivre</h3>
-      <p>
-        <a href="#">Facebook</a><br>
-        <a href="#">YouTube</a><br>
-        <a href="#">Telegram</a><br>
-        <a href="#">X (ancien Twitter)</a>
-      </p>
-    </div>
-
-    <div class="footer-block">
-      <h3>Mentions légales</h3>
-      <p>
-        © 2025 AyitiChrono — Tous droits réservés.<br>
-        Tout contenu reste propriété de ses auteurs.
-      </p>
-    </div>
-  </div>
-
-  <div class="footer-final">
-    Développé avec passion pour une Haïti mieux informée.
-  </div>
-</footer>
-
-<!-- ===================== JS ARTICLES ===================== -->
 <script>
+/* ARTICLES POLITIQUE */
 const categorie = "politique";
 const container = document.querySelector(".articles-list");
 
@@ -113,13 +54,6 @@ fetch("articles.json")
       });
     }
   });
-</script>
-
-<!-- ===================== MENU BURGER SCRIPT ===================== -->
-<script>
-document.getElementById("menu-btn").addEventListener("click", () => {
-  document.getElementById("mobile-menu").classList.toggle("active");
-});
 </script>
 
 </body>
