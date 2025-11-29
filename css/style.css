@@ -1,10 +1,10 @@
 /:root {
-  --brand-blue: #003366;
-  --brand-blue-alpha: rgba(0, 51, 102, 0.8);
-  --accent: #ffcc00;
-  --text: #222;
-  --muted: #777;
-  --bg-light: #f6f6f6;
+   brand-blue: #003366;
+   brand-blue-alpha: rgba(0, 51, 102, 0.8);
+   accent: #ffcc00;
+   text: #222;
+   muted: #777;
+   bg-light: #f6f6f6;
 }
 
  /* Styles globaux / reset */
