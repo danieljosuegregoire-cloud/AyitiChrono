@@ -7,8 +7,11 @@
   <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
+
+  <!-- Header injecté -->
   <div id="header-container"></div>
 
+  <!-- Contenu principal -->
   <section class="section">
     <h2>Économie</h2>
     <div class="articles">
@@ -17,56 +20,66 @@
         <p>Les PME disparaissent sous l'effet de l'insécurité...</p>
       </div>
       <div class="card">
-        <h3>Investissements étrangers, zero</h3>
+        <h3>Investissements étrangers, zéro</h3>
         <p>Les investisseurs internationaux s'enfuient d'Haïti...</p>
       </div>
     </div>
   </section>
 
+  <!-- Footer injecté -->
   <div id="footer-container"></div>
 
-<script>
-const categorie = "politique"; // À changer pour chaque page : politique, economie, societe, international
-const container = document.querySelector(".articles-list");
-
-fetch("/articles.json")
-  .then(response => response.json())
-  .then(data => {
-    if(data[categorie]){
-      data[categorie].forEach(article => {
-        const card = document.createElement("article");
-        card.classList.add("article-card");
-        card.innerHTML = `
-          <a href="${article.url}">
-            <img src="${article.image}" alt="${article.title}">
-            <h2>${article.title}</h2>
-            <p>${article.summary}</p>
-          </a>
-        `;
-        container.appendChild(card);
-      });
-    }
-  })
-  .catch(err => console.error("Erreur lors du chargement des articles :", err));
-</script>
-
-<div id="footer-container"></div>
-
-  <!-- Script pour injecter le header et footer -->
+  <!-- Script pour injecter header, footer et activer menu mobile -->
   <script>
     // Charger le header
     fetch('/header.html')
       .then(r => r.text())
       .then(html => {
         document.getElementById('header-container').innerHTML = html;
-      });
+
+        // Activer le menu mobile après injection
+        const menuBtn = document.getElementById('menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        if(menuBtn && mobileMenu){
+          menuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('active');
+            mobileMenu.setAttribute('aria-hidden', !mobileMenu.classList.contains('active'));
+          });
+        }
+      })
+      .catch(err => console.error("Erreur lors du chargement du header :", err));
 
     // Charger le footer
     fetch('/footer.html')
       .then(r => r.text())
       .then(html => {
         document.getElementById('footer-container').innerHTML = html;
-      });
+      })
+      .catch(err => console.error("Erreur lors du chargement du footer :", err));
+
+    // Charger les articles dynamiquement
+    const categorie = "economie"; // changer pour chaque page : politique, economie, societe, international
+    const container = document.querySelector(".articles");
+
+    fetch("/articles.json")
+      .then(response => response.json())
+      .then(data => {
+        if(data[categorie]){
+          data[categorie].forEach(article => {
+            const card = document.createElement("article");
+            card.classList.add("article-card");
+            card.innerHTML = `
+              <a href="${article.url}">
+                <img src="${article.image}" alt="${article.title}">
+                <h2>${article.title}</h2>
+                <p>${article.summary}</p>
+              </a>
+            `;
+            container.appendChild(card);
+          });
+        }
+      })
+      .catch(err => console.error("Erreur lors du chargement des articles :", err));
   </script>
 
 </body>
