@@ -76,3 +76,10 @@
     display: flex;
   }
 }
+
+@media(max-width:900px){
+  .desktop-menu{display:none} /* Cache le menu desktop */
+  .menu-btn{display:block}    /* Affiche l’icône hamburger */
+  .hero-text h1{font-size:26px} 
+  .hero-figure img{height:220px} 
+}
