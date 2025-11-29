@@ -48,7 +48,8 @@
     position:absolute; /* Placé au-dessus des autres éléments */
     right:12px;        /* Décalé de 12px du bord droit */
     top:56px;          /* Juste sous la topbar */
-    background:var(--brand-green); /* Couleur verte translucide */
+    background: rgba(0, 51, 102, 0.8);
+};
     padding:12px;      /* Marges internes */
     border-radius:8px; /* Coins arrondis */
     display:none;      /* Caché par défaut */
