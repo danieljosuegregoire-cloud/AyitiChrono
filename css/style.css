@@ -1,4 +1,13 @@
-/* Styles globaux / reset */
+/:root {
+  --brand-blue: #003366;
+  --brand-blue-alpha: rgba(0, 51, 102, 0.8);
+  --accent: #ffcc00;
+  --text: #222;
+  --muted: #777;
+  --bg-light: #f6f6f6;
+}
+
+ /* Styles globaux / reset */
 * { box-sizing: border-box; margin: 0; padding: 0; }
 
 body {
@@ -6,15 +15,6 @@ body {
   color: #222;
   background: #f6f6f6;
   line-height: 1.5;
-}
-
-/* --- FOOTER --- */
-footer {
-  background: #003366;     /* couleur de fond */
-  color: white;
-  padding: 28px 20px;
-  margin-top: 36px;
-  width: 100%;             /* couvre toute la largeur */
 }
 
 /* HEADER / TOPBAR */
@@ -95,6 +95,15 @@ footer {
   .mobile-menu.active {
     display: flex;
   }
+}
+
+/* --- FOOTER --- */
+footer {
+  background: #003366;     /* couleur de fond */
+  color: white;
+  padding: 28px 20px;
+  margin-top: 36px;
+  width: 100%;             /* couvre toute la largeur */
 }
 
 @media(max-width:900px){
