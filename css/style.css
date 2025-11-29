@@ -11,16 +11,20 @@
   font-weight: bold;
 }
 
-/* Menu desktop */
-.desktop-menu {
-  display: flex;
-  gap: 18px;
+.desktop-menu{
+    display:flex;     /* Les liens sont alignés horizontalement */
+    gap:18px;         /* Espacement entre chaque lien */
+    align-items:center; /* Alignement vertical des liens */
 }
-
-.desktop-menu a {
-  text-decoration: none;
-  color: #333;
-  font-weight: 500;
+.desktop-menu a{
+    color:white;       /* Couleur du texte des liens */
+    text-decoration:none; /* Retire le soulignement */
+    font-size:15px;    /* Taille du texte */
+    padding:6px 8px;   /* Espace autour du lien */
+    border-radius:4px; /* Coins arrondis si on applique un fond */
+}
+.desktop-menu a:hover{
+    background:rgba(255,255,255,0.06); /* Fond léger au survol */
 }
 
 /* Bouton burger */
