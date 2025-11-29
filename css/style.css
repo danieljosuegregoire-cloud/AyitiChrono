@@ -43,22 +43,25 @@
   cursor: pointer;
 }
 
-/* Menu mobile */
-.mobile-menu {
-  display: none;
-  flex-direction: column;
-  background: #fff;
-  width: 100%;
-  padding: 20px;
-  border-top: 1px solid #ddd;
+.mobile-menu{
+    position:absolute; /* Placé au-dessus des autres éléments */
+    right:12px;        /* Décalé de 12px du bord droit */
+    top:56px;          /* Juste sous la topbar */
+    background:var(--brand-green); /* Couleur verte translucide */
+    padding:12px;      /* Marges internes */
+    border-radius:8px; /* Coins arrondis */
+    display:none;      /* Caché par défaut */
+    flex-direction:column; /* Liens empilés verticalement */
+    min-width:200px;   /* Largeur minimale du menu */
+    box-shadow:0 6px 18px rgba(0,0,0,0.18); /* Ombre */
 }
-
-.mobile-menu a {
-  padding: 12px 0;
-  border-bottom: 1px solid #eee;
-  text-decoration: none;
-  color: #333;
+.mobile-menu a{
+    color:white;
+    padding:10px 8px;
+    text-decoration:none;
+    border-bottom:1px solid rgba(255,255,255,0.06);
 }
+.mobile-menu a:last-child{border-bottom:none;}
 
 /* Responsive */
 @media (max-width: 768px) {
