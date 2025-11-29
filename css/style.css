@@ -49,7 +49,7 @@
     right:12px;        /* Décalé de 12px du bord droit */
     top:56px;          /* Juste sous la topbar */
     background: rgba(0, 51, 102, 0.8);
-};  padding:12px;      /* Marges internes */
+    padding:12px;      /* Marges internes */
     border-radius:8px; /* Coins arrondis */
     display:none;      /* Caché par défaut */
     flex-direction:column; /* Liens empilés verticalement */
