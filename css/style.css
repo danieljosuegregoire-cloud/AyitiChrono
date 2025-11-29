@@ -3,7 +3,7 @@
       position:sticky;        /* La barre reste visible en haut lors du scroll */
       top:0;                  /* Collée en haut de la page */
       z-index:999;            /* Au-dessus des autres éléments */
-      width:100%
+      width:100%;
       background:#003366;     /* Couleur de fond bleue */
       color:white;            /* Couleur du texte (y compris le logo et liens) */
       display:flex;           /* Affiche les éléments en ligne (flexbox) */
