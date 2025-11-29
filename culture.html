@@ -4,39 +4,73 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <title>AyitiChrono – Culture</title>
+
+  <!-- CSS GLOBAL -->
   <link rel="stylesheet" href="css/style.css">
+
+  <!-- Icônes Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" crossorigin="anonymous">
 </head>
 <body>
 
+<!-- ===================== HEADER ===================== -->
 <div id="header-container"></div>
 
-<section class="section">
-  <h2>Culture</h2>
-  <div class="articles">
-    <div class="card">
-      <h3>Patrimoine haïtien</h3>
-      <p>Exploration de l’héritage culturel, historique et artistique d’Haïti...</p>
-    </div>
-    <div class="card">
-      <h3>Arts et spectacles</h3>
-      <p>Les concerts, expositions, livres et créations qui marquent l’actualité culturelle...</p>
-    </div>
-  </div>
-</section>
+<!-- ===================== CONTENU ===================== -->
+<main class="section">
+  <h1>Actualité – Culture</h1>
 
+  <section class="articles">
+    <div class="articles-list">
+
+      <!-- ======= ARTICLES FIXES (à conserver) ======= -->
+
+      <div class="card">
+        <h3>Patrimoine haïtien</h3>
+        <p>Exploration de l’héritage culturel, historique et artistique d’Haïti...</p>
+      </div>
+
+      <div class="card">
+        <h3>Arts et spectacles</h3>
+        <p>Les concerts, expositions, livres et créations qui marquent l’actualité culturelle...</p>
+      </div>
+
+    </div>
+  </section>
+</main>
+
+<!-- ===================== FOOTER ===================== -->
 <div id="footer-container"></div>
 
+<!-- ===================== CHARGEMENT HEADER + FOOTER ===================== -->
+<script src="js/header.js"></script>
+
+<!-- ===================== CHARGEMENT DYNAMIQUE DES ARTICLES (si ajout futur) ===================== -->
 <script>
-  fetch("header.html")
-    .then(res => res.text())
-    .then(data => document.getElementById("header").innerHTML = data);
+const categorie = "culture"; 
+const container = document.querySelector(".articles-list");
 
-  fetch("footer.html")
-    .then(res => res.text())
-    .then(data => document.getElementById("footer").innerHTML = data);
+fetch("articles.json")
+  .then(response => response.json())
+  .then(data => {
+    if (data[categorie]) {
+      data[categorie].forEach(article => {
+        const card = document.createElement("div");
+        card.classList.add("card");
+
+        card.innerHTML = `
+          <a href="${article.url}">
+            <img src="${article.image}" alt="${article.title}" style="width:100%;border-radius:6px;">
+            <h2>${article.title}</h2>
+            <p>${article.summary}</p>
+          </a>
+        `;
+        container.appendChild(card);
+      });
+    }
+  })
+  .catch(err => console.error("Erreur lors du chargement des articles :", err));
 </script>
-
-<script src="header.js"></script>
 
 </body>
 </html>
