@@ -1,148 +1,105 @@
-/* ============================================================
-   VARIABLES GLOBALES
-   ============================================================ */
-:root {
-   brand-blue: #003366;
-   brand-blue-alpha: rgba(0, 51, 102, 0.8);
-   accent: #ffcc00;
-   text: #222;
-   muted: #777;
-   bg-light: #f6f6f6;
-}
-
-
-/* ============================================================
-   RESET + STYLES GLOBAUX
-   ============================================================ */
-* {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-}
+/* Styles globaux / reset */
+* { box-sizing: border-box; margin: 0; padding: 0; }
 
 body {
   font-family: Arial, Helvetica, sans-serif;
-  color: var(--text);
-  background: var(--bg-light);
+  color: #222;
+  background: #f6f6f6;
   line-height: 1.5;
 }
 
-
-/* ============================================================
-   HEADER / TOPBAR
-   ============================================================ */
-.topbar {
-  position: sticky;
-  top: 0;
-  z-index: 999;
-  width: 100%;
-  background: var(--brand-blue);
-  color: white;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 12px 20px;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.12);
-}
-
-.logo {
-  font-weight: 700;
-  font-size: 22px;
-  letter-spacing: 0.5px;
-}
-
-
-/* ============================================================
-   MENU DESKTOP
-   ============================================================ */
-.desktop-menu {
-  display: flex;
-  gap: 18px;
-  align-items: center;
-}
-
-.desktop-menu a {
-  color: white;
-  text-decoration: none;
-  font-size: 15px;
-  padding: 6px 8px;
-  border-radius: 4px;
-}
-
-.desktop-menu a:hover {
-  background: rgba(255,255,255,0.06);
-}
-
-
-/* ============================================================
-   BOUTON BURGER (mobile)
-   ============================================================ */
-.menu-btn {
-  display: none;
-  font-size: 26px;
-  cursor: pointer;
-  background: none;
-  border: none;
-  color: white;
-}
-
-
-/* ============================================================
-   MENU MOBILE
-   ============================================================ */
-.mobile-menu {
-  position: absolute;
-  right: 12px;
-  top: 56px;
-  background: var(--brand-blue-alpha);
-  padding: 12px;
-  border-radius: 8px;
-  display: none;
-  flex-direction: column;
-  min-width: 200px;
-  box-shadow: 0 6px 18px rgba(0,0,0,0.18);
-}
-
-.mobile-menu a {
-  color: white;
-  padding: 10px 8px;
-  text-decoration: none;
-  border-bottom: 1px solid rgba(255,255,255,0.06);
-}
-
-.mobile-menu a:last-child {
-  border-bottom: none;
-}
-
-.mobile-menu.active {
-  display: flex;
-}
-
-
-/* ============================================================
-   FOOTER
-   ============================================================ */
+/* --- FOOTER --- */
 footer {
-  background: var(--brand-blue);
+  background: #003366;     /* couleur de fond */
   color: white;
   padding: 28px 20px;
   margin-top: 36px;
-  width: 100%;
+  width: 100%;             /* couvre toute la largeur */
 }
 
+/* HEADER / TOPBAR */
+.topbar{
+      position:sticky;        /* La barre reste visible en haut lors du scroll */
+      top:0;                  /* Collée en haut de la page */
+      z-index:999;            /* Au-dessus des autres éléments */
+      width:100%;
+      background:#003366;     /* Couleur de fond bleue */
+      color:white;            /* Couleur du texte (y compris le logo et liens) */
+      display:flex;           /* Affiche les éléments en ligne (flexbox) */
+      align-items:center;     /* Centre verticalement le contenu */
+      justify-content:space-between; /* Met l’espace entre logo et menu */
+      padding:12px 20px;      /* Marges internes : 12px vertical, 20px horizontal */
+      box-shadow:0 2px 6px rgba(0,0,0,0.12); /* Ombre légère sous la barre */
+}
 
-/* ============================================================
-   RESPONSIVE
-   ============================================================ */
+.logo{
+    font-weight:700;   /* Texte en gras */
+    font-size:22px;    /* Taille du texte */
+    letter-spacing:0.5px; /* Espacement entre lettres */
+}
 
+.desktop-menu{
+    display:flex;     /* Les liens sont alignés horizontalement */
+    gap:18px;         /* Espacement entre chaque lien */
+    align-items:center; /* Alignement vertical des liens */
+}
+.desktop-menu a{
+    color:white;       /* Couleur du texte des liens */
+    text-decoration:none; /* Retire le soulignement */
+    font-size:15px;    /* Taille du texte */
+    padding:6px 8px;   /* Espace autour du lien */
+    border-radius:4px; /* Coins arrondis si on applique un fond */
+}
+.desktop-menu a:hover{
+    background:rgba(255,255,255,0.06); /* Fond léger au survol */
+}
+
+/* Bouton burger */
+.menu-btn{
+    display:none;       /* Caché sur desktop, affiché en mobile via media query */
+    font-size:26px;     /* Taille de l’icône ☰ */
+    cursor:pointer;     /* Change le curseur pour montrer que c’est cliquable */
+    background:none;    /* Pas de fond par défaut */
+    border:none;        /* Pas de bordure */
+    color:white;        /* Couleur de l’icône */
+}
+
+.mobile-menu{
+    position:absolute; /* Placé au-dessus des autres éléments */
+    right:12px;        /* Décalé de 12px du bord droit */
+    top:56px;          /* Juste sous la topbar */
+    background: rgba(0, 51, 102, 0.8);
+    padding:12px;      /* Marges internes */
+    border-radius:8px; /* Coins arrondis */
+    display:none;      /* Caché par défaut */
+    flex-direction:column; /* Liens empilés verticalement */
+    min-width:200px;   /* Largeur minimale du menu */
+    box-shadow:0 6px 18px rgba(0,0,0,0.18); /* Ombre */
+}
+.mobile-menu a{
+    color:white;
+    padding:10px 8px;
+    text-decoration:none;
+    border-bottom:1px solid rgba(255,255,255,0.06);
+}
+.mobile-menu a:last-child{border-bottom:none;}
+
+/* Responsive */
 @media (max-width: 768px) {
-  .desktop-menu { display: none; }
-  .menu-btn { display: block; }
+  .desktop-menu {
+    display: none;
+  }
+  .menu-btn {
+    display: block;
+  }
+  .mobile-menu.active {
+    display: flex;
+  }
 }
 
-@media (max-width: 900px) {
-  .desktop-menu { display: none; }
-  .menu-btn { display: block; }
-  .hero-text h1 { font-size: 26px; }
-  .hero-figure img { height: 220px; }
+@media(max-width:900px){
+  .desktop-menu{display:none} /* Cache le menu desktop */
+  .menu-btn{display:block}    /* Affiche l’icône hamburger */
+  .hero-text h1{font-size:26px} 
+  .hero-figure img{height:220px} 
 }
