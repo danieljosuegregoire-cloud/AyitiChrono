@@ -10,6 +10,7 @@
       justify-content:space-between; /* Met l’espace entre logo et menu */
       padding:12px 20px;      /* Marges internes : 12px vertical, 20px horizontal */
       box-shadow:0 2px 6px rgba(0,0,0,0.12); /* Ombre légère sous la barre */
+      width:100%
 }
 
 .logo{
