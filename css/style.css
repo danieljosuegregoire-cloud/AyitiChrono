@@ -35,12 +35,13 @@
 }
 
 /* Bouton burger */
-.menu-btn {
-  font-size: 32px;
-  background: none;
-  border: none;
-  display: none;
-  cursor: pointer;
+.menu-btn{
+    display:none;       /* Caché sur desktop, affiché en mobile via media query */
+    font-size:26px;     /* Taille de l’icône ☰ */
+    cursor:pointer;     /* Change le curseur pour montrer que c’est cliquable */
+    background:none;    /* Pas de fond par défaut */
+    border:none;        /* Pas de bordure */
+    color:white;        /* Couleur de l’icône */
 }
 
 .mobile-menu{
