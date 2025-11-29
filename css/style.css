@@ -4,7 +4,6 @@
       top:0;                  /* Collée en haut de la page */
       z-index:999;            /* Au-dessus des autres éléments */
       background:#003366;     /* Couleur de fond bleue */
-      width:100
       color:white;            /* Couleur du texte (y compris le logo et liens) */
       display:flex;           /* Affiche les éléments en ligne (flexbox) */
       align-items:center;     /* Centre verticalement le contenu */
