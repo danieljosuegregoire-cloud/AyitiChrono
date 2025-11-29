@@ -4,61 +4,60 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <title>AyitiChrono – International</title>
+
+  <!-- CSS GLOBAL -->
   <link rel="stylesheet" href="css/style.css">
+
+  <!-- Icônes Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" crossorigin="anonymous">
 </head>
 <body>
 
-  <!-- Header injecté -->
-  <div id="header-container"></div>
+<!-- ===================== HEADER ===================== -->
+<div id="header-container"></div>
 
-  <!-- Contenu principal -->
-  <section class="section">
-    <h2>International</h2>
-    <div class="articles-list">
-      <div class="card">
-        <h3>Événements mondiaux</h3>
-        <p>Résumé des actualités internationales les plus importantes...</p>
-      </div>
-      <div class="card">
-        <h3>Relations diplomatiques</h3>
-        <p>Les relations entre Haïti et d’autres pays se renforcent...</p>
-      </div>
-    </div>
+<!-- ===================== CONTENU ===================== -->
+<main class="section">
+  <h1>Actualité – International</h1>
+
+  <section class="articles">
+    <div class="articles-list"></div>
   </section>
+</main>
 
-  <!-- Footer injecté -->
-  <div id="footer-container"></div>
+<!-- ===================== FOOTER ===================== -->
+<div id="footer-container"></div>
 
-  <!-- Script pour charger les articles dynamiquement -->
-  <script>
-    const categorie = "international"; // correspond à cette page
-    const container = document.querySelector(".articles-list");
+<!-- ===================== CHARGEMENT HEADER + FOOTER ===================== -->
+<script src="js/header.js"></script>
 
-    fetch("/articles.json")
-      .then(response => response.json())
-      .then(data => {
-        if(data[categorie]){
-          data[categorie].forEach(article => {
-            const card = document.createElement("article");
-            card.classList.add("article-card");
-            card.innerHTML = `
-              <a href="${article.url}">
-                <img src="${article.image}" alt="${article.title}">
-                <h2>${article.title}</h2>
-                <p>${article.summary}</p>
-              </a>
-            `;
-            container.appendChild(card);
-          });
-        }
-      })
-      .catch(err => console.error("Erreur lors du chargement des articles :", err));
-  </script>
+<!-- ===================== ARTICLES INTERNATIONAL ===================== -->
+<script>
+const categorie = "international";
+const container = document.querySelector(".articles-list");
 
-  <!-- Script pour injecter header & footer -->
-  <script src="load-header-footer.js"></script>
+fetch("articles.json")
+  .then(response => response.json())
+  .then(data => {
+    if (data[categorie]) {
+      data[categorie].forEach(article => {
+        const card = document.createElement("div");
+        card.classList.add("card");
 
-<script src="header.js"></script>
+        card.innerHTML = `
+          <a href="${article.url}">
+            <img src="${article.image}" alt="${article.title}" style="width:100%;border-radius:6px;">
+            <h2>${article.title}</h2>
+            <p>${article.summary}</p>
+          </a>
+        `;
+
+        container.appendChild(card);
+      });
+    }
+  })
+  .catch(err => console.error("Erreur lors du chargement des articles :", err));
+</script>
 
 </body>
 </html>
