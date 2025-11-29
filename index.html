@@ -4,118 +4,116 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>AyitiChrono – L’actualité en temps réel</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-<h1>AyitiChrono</h1>
+  <!-- HEADER -->
+  <header class="topbar">
+    <div class="logo">AyitiChrono</div>
+    <nav class="desktop-menu" aria-label="Menu principal">
+      <a href="/index.html">Accueil</a>
+      <a href="/politique.html">Politique</a>
+      <a href="/economie.html">Économie</a>
+      <a href="/societe.html">Société</a>
+      <a href="/international.html">International</a>
+      <a href="/sport.html">Sport</a>
+      <a href="/culture.html">Culture</a>
+      <a href="/technologie.html">Technologie</a>
+    </nav>
+    <button id="menu-btn" class="menu-btn" aria-label="Ouvrir le menu">☰</button>
+    <nav id="mobile-menu" class="mobile-menu" aria-hidden="true">
+      <a href="/index.html">Accueil</a>
+      <a href="/politique.html">Politique</a>
+      <a href="/economie.html">Économie</a>
+      <a href="/societe.html">Société</a>
+      <a href="/international.html">International</a>
+      <a href="/sport.html">Sport</a>
+      <a href="/culture.html">Culture</a>
+      <a href="/technologie.html">Technologie</a>
+    </nav>
+  </header>
 
-<nav class="desktop-menu" aria-label="Menu principal">
-  <a href="/index.html">Accueil</a>
-  <a href="/politique.html">Politique</a>
-  <a href="/economie.html">Économie</a>
-  <a href="/societe.html">Société</a>
-  <a href="/international.html">International</a>
-  <a href="/sport.html">Sport</a>
-  <a href="/culture.html">Culture</a>
-  <a href="/technologie.html">Technologie</a>
-</nav>
-
-<button id="menu-btn" class="menu-btn" aria-label="Ouvrir le menu">☰</button>
-
-<nav id="mobile-menu" class="mobile-menu" aria-hidden="true">
-  <a href="/index.html">Accueil</a>
-  <a href="/politique.html">Politique</a>
-  <a href="/economie.html">Économie</a>
-  <a href="/societe.html">Société</a>
-  <a href="/international.html">International</a>
-  <a href="/sport.html">Sport</a>
-  <a href="/culture.html">Culture</a>
-  <a href="/technologie.html">Technologie</a>
-</nav>
-
-<h2>L’actualité, minute par minute</h2>
-<p>Un regard clair, rapide et fiable sur l’info en Haïti et dans le monde.</p>
-
-<!-- ARTICLE PRINCIPAL (avec date+heure + illustration + signature) -->
-<section class="section">
-  <article class="article">
-    <h1>Les États-Unis réexaminent la résidence permanente pour les citoyens de 19 pays, dont Haïti</h1>
-
-    <div class="meta" id="meta-article">
-      Publié le <time id="publish-datetime" datetime="">--</time> — Par Etienne VILFORT, pour la Rédaction
+  <!-- HERO -->
+  <section class="hero">
+    <div class="slides">
+      <img src="/images/residence-permanente.jpg" class="active" alt="Capitole et carte verte — illustration">
+      <img src="https://images.unsplash.com/photo-1507842217343-583bb7270b66?auto=format&fit=crop&w=1600&q=60" alt="">
+      <img src="https://images.unsplash.com/photo-1523875194681-bedd468c58bf?auto=format&fit=crop&w=1600&q=60" alt="">
     </div>
-
-    <figure class="hero-figure">
-      <!-- IMPORTANT : uploade ton image dans /images/residence-permanente.jpg -->
-      <img src="/images/residence-permanente.jpg" alt="Capitole et carte verte — illustration">
-    </figure>
-
-    <p>L’administration Trump va réexaminer la procédure d’obtention de la résidence permanente pour les citoyens de 19 pays, dont Haïti, l’Iran, Cuba, le Venezuela et la Somalie. « La protection des Américains reste primordiale, et ils ne peuvent plus supporter les conséquences des politiques de réinstallation irresponsables de l’administration précédente », a déclaré Joseph Edlow, directeur du service de la Citoyenneté et de l’Immigration (USCIS).</p>
-
-    <p>Cette annonce intervient quelques jours après que l’administration Trump a mis fin au statut TPS pour les ressortissants haïtiens.</p>
-
-    <p>Entre-temps, le gouvernement américain continue d’imposer ses politiques et sa volonté aux membres du Conseil présidentiel, tout en sanctionnant "ceux qui tenteraient de lui résister".</p>
-  </article>
-</section>
-
-<!-- EXEMPLES D'AUTRES SECTIONS -->
-<section class="section">
-  <h2>Actualités</h2>
-  <div class="articles-grid">
-    <div class="card">
-      <img src="https://images.unsplash.com/photo-1523875194681-bedd468c58bf?auto=format&fit=crop&w=900&q=60" alt="">
-      <h3>Titre 1</h3>
-      <p class="meta">Résumé…</p>
+    <div class="hero-text">
+      <h1>L’actualité, minute par minute</h1>
+      <p>Un regard clair, rapide et fiable sur l’info en Haïti et dans le monde.</p>
     </div>
-    <div class="card">
-      <img src="https://images.unsplash.com/photo-1507842217343-583bb7270b66?auto=format&fit=crop&w=900&q=60" alt="">
-      <h3>Titre 2</h3>
-      <p class="meta">Résumé…</p>
+  </section>
+
+  <!-- ARTICLE PRINCIPAL -->
+  <main class="container">
+    <section class="section">
+      <article class="article">
+        <h1>Les États-Unis réexaminent la résidence permanente pour les citoyens de 19 pays, dont Haïti</h1>
+        <div class="meta" id="meta-article">
+          Publié le <time id="publish-datetime" datetime="">--</time> — Par Etienne VILFORT, pour la Rédaction
+        </div>
+        <figure class="hero-figure">
+          <img src="/images/residence-permanente.jpg" alt="Capitole et carte verte — illustration">
+        </figure>
+        <p>L’administration Trump va réexaminer la procédure d’obtention de la résidence permanente pour les citoyens de 19 pays, dont Haïti, l’Iran, Cuba, le Venezuela et la Somalie. « La protection des Américains reste primordiale, et ils ne peuvent plus supporter les conséquences des politiques de réinstallation irresponsables de l’administration précédente », a déclaré Joseph Edlow, directeur du service de la Citoyenneté et de l’Immigration (USCIS).</p>
+        <p>Cette annonce intervient quelques jours après que l’administration Trump a mis fin au statut TPS pour les ressortissants haïtiens.</p>
+        <p>Entre-temps, le gouvernement américain continue d’imposer ses politiques et sa volonté aux membres du Conseil présidentiel, tout en sanctionnant "ceux qui tenteraient de lui résister".</p>
+      </article>
+    </section>
+
+    <!-- AUTRES ARTICLES -->
+    <section class="section">
+      <h2>Actualités</h2>
+      <div class="articles-grid">
+        <div class="card">
+          <img src="https://images.unsplash.com/photo-1523875194681-bedd468c58bf?auto=format&fit=crop&w=900&q=60" alt="">
+          <h3>Titre 1</h3>
+          <p class="meta">Résumé…</p>
+        </div>
+        <div class="card">
+          <img src="https://images.unsplash.com/photo-1507842217343-583bb7270b66?auto=format&fit=crop&w=900&q=60" alt="">
+          <h3>Titre 2</h3>
+          <p class="meta">Résumé…</p>
+        </div>
+        <div class="card">
+          <img src="https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?auto=format&fit=crop&w=900&q=60" alt="">
+          <h3>Titre 3</h3>
+          <p class="meta">Résumé…</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- FOOTER -->
+  <footer>
+    <div>
+      <h3>À propos</h3>
+      <p>AyitiChrono est un média en ligne indépendant qui offre une information rapide, fiable et structurée sur l’actualité nationale et internationale.</p>
     </div>
-    <div class="card">
-      <img src="https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?auto=format&fit=crop&w=900&q=60" alt="">
-      <h3>Titre 3</h3>
-      <p class="meta">Résumé…</p>
+    <div>
+      <h3>Contact</h3>
+      <p>Adresse : 109, Delmas 83, rue Beaubrun, Haïti</p>
+      <p>Email : contact@ayitichrono.com</p>
     </div>
-  </div>
-</section>
+    <div>
+      <h3>Nous suivre</h3>
+      <p>
+        <a href="#">Facebook</a><br>
+        <a href="#">YouTube</a><br>
+        <a href="#">Telegram</a><br>
+        <a href="#">X (ancien Twitter)</a>
+      </p>
+    </div>
+    <div>
+      <h3>Mentions légales</h3>
+      <p>© 2025 AyitiChrono — Tous droits réservés.<br>Les informations publiées restent la propriété de leurs auteurs respectifs.</p>
+    </div>
+    <p>Développé avec passion pour une Haïti mieux informée.</p>
+  </footer>
 
-<!-- À propos -->
-<div style="flex:1 1 250px; margin-bottom:20px;">
-  <h3 style="margin-bottom:10px; font-size:20px;">À propos</h3>
-  <p style="line-height:1.6;">
-    AyitiChrono est un média en ligne indépendant qui offre une information rapide, fiable et structurée sur l’actualité nationale et internationale.
-  </p>
-</div>
-
-<!-- Contact -->
-<div style="flex:1 1 250px; margin-bottom:20px;">
-  <h3 style="margin-bottom:10px; font-size:20px;">Contact</h3>
-  <p style="line-height:1.6;">Adresse : 109, Delmas 83, rue Beaubrun, Haïti</p>
-  <p>Email : contact@ayitichrono.com</p>
-</div>
-
-<!-- Réseaux sociaux -->
-<div style="flex:1 1 250px; margin-bottom:20px;">
-  <h3 style="margin-bottom:10px; font-size:20px;">Nous suivre</h3>
-  <p>
-    <a href="#" style="color:white; text-decoration:none; margin-right:10px;">Facebook</a><br>
-    <a href="#" style="color:white; text-decoration:none; margin-right:10px;">YouTube</a><br>
-    <a href="#" style="color:white; text-decoration:none; margin-right:10px;">Telegram</a><br>
-    <a href="#" style="color:white; text-decoration:none; margin-right:10px;">X (ancien Twitter)</a>
-  </p>
-</div>
-
-<!-- Mentions légales -->
-<div style="flex:1 1 250px; margin-bottom:20px;">
-  <h3 style="margin-bottom:10px; font-size:20px;">Mentions légales</h3>
-  <p style="line-height:1.6;">
-    © 2025 AyitiChrono — Tous droits réservés.<br>
-    Les informations publiées restent la propriété de leurs auteurs respectifs.
-  </p>
-</div>
-
-<p>Développé avec passion pour une Haïti mieux informée.</p>
-
+  <script src="header.js"></script>
 </body>
 </html>
