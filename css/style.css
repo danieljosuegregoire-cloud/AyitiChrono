@@ -1,3 +1,22 @@
+/* Styles globaux / reset */
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  color: #222;
+  background: #f6f6f6;
+  line-height: 1.5;
+}
+
+/* --- FOOTER --- */
+footer {
+  background: #003366;     /* couleur de fond */
+  color: white;
+  padding: 28px 20px;
+  margin-top: 36px;
+  width: 100%;             /* couvre toute la largeur */
+}
+
 /* HEADER / TOPBAR */
 .topbar{
       position:sticky;        /* La barre reste visible en haut lors du scroll */
