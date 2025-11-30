@@ -4,12 +4,12 @@
 
 /* Variables globales */
 :root{
-  brand-blue: #003366;
-  brand-blue-alpha: rgba(0, 51, 102, 0.8);
-  accent: #ffcc00;
-  text: #222;
-  muted: #777;
-  bg-light: #f6f6f6;
+  --brand-blue: #003366;
+  --brand-blue-alpha: rgba(0, 51, 102, 0.8);
+  --accent: #ffcc00;
+  --text: #222;
+  --muted: #777;
+  --bg-light: #f6f6f6;
 }
 
 /* Reset / global */
@@ -32,7 +32,7 @@ body {
 }
 
 /* ==========================
-   FOOTER (défaut)
+   FOOTER
    ========================== */
 footer{
   background: var(--brand-blue);
@@ -41,7 +41,6 @@ footer{
   margin-top: 36px;
   width: 100%;
   text-align: center;
-  font-family: Arial, sans-serif;
 }
 
 /* ==========================
@@ -74,30 +73,76 @@ footer{
   gap: 18px;
   align-items: center;
 }
-.desktop-menu a{
+
+.desktop-menu a,
+.dropbtn{
   color: white;
   text-decoration: none;
   font-size: 15px;
   padding: 6px 8px;
   border-radius: 4px;
-  transition: background .18s, color .18s;
+  transition: background .18s;
+  cursor: pointer;
+  background: none;
+  border: none;
 }
-.desktop-menu a:hover{
+
+.desktop-menu a:hover,
+.dropbtn:hover{
   background: rgba(255,255,255,0.06);
 }
 
-/* Hamburger (mobile) */
+/* ==========================
+   DROPDOWN (Desktop)
+   ========================== */
+
+.dropdown{
+  position: relative;
+  display: inline-block;
+}
+
+.dropdown-content{
+  display: none;
+  position: absolute;
+  background: var(--brand-blue);
+  min-width: 200px;
+  padding: 6px 0;
+  top: 100%;
+  left: 0;
+  z-index: 20;
+  border-radius: 6px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.25);
+}
+
+.dropdown-content a{
+  color: white;
+  padding: 10px 14px;
+  text-decoration: none;
+  display: block;
+  font-size: 14px;
+}
+
+.dropdown-content a:hover{
+  background: #002244;
+}
+
+.dropdown:hover .dropdown-content{
+  display: block;
+}
+
+/* ==========================
+   MOBILE MENU
+   ========================== */
+
 .menu-btn{
-  display: none;              /* affiché via media query en mobile */
+  display: none;
   font-size: 26px;
   cursor: pointer;
   background: none;
   border: none;
   color: white;
-  padding: 6px 8px;
 }
 
-/* Mobile dropdown container */
 .mobile-menu{
   position: absolute;
   right: 12px;
@@ -105,86 +150,29 @@ footer{
   background: var(--brand-blue-alpha);
   padding: 12px;
   border-radius: 8px;
-  display: none;              /* affiché quand .active */
+  display: none;
   flex-direction: column;
   min-width: 200px;
   box-shadow: 0 6px 18px rgba(0,0,0,0.18);
 }
+
 .mobile-menu a{
   color: white;
   padding: 10px 8px;
   text-decoration: none;
   border-bottom: 1px solid rgba(255,255,255,0.06);
 }
-.mobile-menu a:last-child{ border-bottom: none; }
 
-/* ==========================
-   Desktop dropdown (Géopolitique + sous-menu)
-   ========================== */
-
-/* wrapper */
-.dropdown {
-  position: relative;
-  display: inline-block;
-  vertical-align: middle;
+.mobile-menu a:last-child{
+  border-bottom: none;
 }
 
-/* bouton visible sur la topbar (cohérent avec .desktop-menu a) */
-.dropbtn {
-  background: none;
-  border: none;
-  color: white;
-  font-size: 15px;         /* harmonisé avec .desktop-menu a */
-  cursor: pointer;
-  padding: 6px 8px;       /* même padding que les <a> */
-  border-radius: 4px;
-  font-family: inherit;
-  text-decoration: none;
+/* MOBILE DROPDOWN */
+.mobile-dropdown{
+  margin-bottom: 10px;
 }
 
-/* hover identique aux autres liens */
-.dropbtn:hover {
-  background: rgba(255,255,255,0.06);
-}
-
-/* contenu du dropdown */
-.dropdown-content {
-  display: none;
-  position: absolute;
-  top: 100%;               /* sous le bouton */
-  left: 0;
-  background: var(--brand-blue);
-  min-width: 220px;
-  padding-top: 6px;
-  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
-  z-index: 20;
-  border-radius: 6px;
-}
-
-/* lien dans dropdown */
-.dropdown-content a {
-  color: white;
-  padding: 10px 14px;
-  display: block;
-  text-decoration: none;
-  font-size: 14px;
-}
-.dropdown-content a:hover {
-  background: #002244;
-}
-
-/* ouverture au hover (desktop) */
-.dropdown:hover .dropdown-content{
-  display: block;
-}
-
-/* ==========================
-   Mobile dropdown (dans mobile-menu)
-   ========================== */
-.mobile-dropdown {
-  margin-bottom: 8px;
-}
-.mobile-dropbtn {
+.mobile-dropbtn{
   width: 100%;
   background: none;
   border: none;
@@ -192,32 +180,35 @@ footer{
   font-size: 15px;
   text-align: left;
   padding: 8px 0;
+  cursor: pointer;
 }
-.mobile-dropdown-content {
+
+.mobile-dropdown-content{
   display: none;
-  padding-left: 12px;
+  padding-left: 14px;
 }
-.mobile-dropdown-content a {
+
+.mobile-dropdown-content a{
   color: white;
-  text-decoration: none;
   padding: 8px 0;
   display: block;
   font-size: 14px;
 }
-.mobile-dropdown.active .mobile-dropdown-content {
+
+.mobile-dropdown.active .mobile-dropdown-content{
   display: block;
 }
 
 /* ==========================
-   Hero / slides / other generic components
+   HERO
    ========================== */
 .hero{
   position: relative;
   height: 400px;
   overflow: hidden;
 }
-.hero .slides img,
-.hero img{
+.hero img,
+.hero .slides img{
   width: 100%;
   height: 100%;
   object-fit: cover;
@@ -227,8 +218,8 @@ footer{
   opacity: 0;
   transition: opacity 1s;
 }
-.hero .slides img.active,
-.hero img.active {
+.hero img.active,
+.hero .slides img.active{
   opacity: 1;
 }
 .hero-text{
@@ -239,59 +230,44 @@ footer{
   color: white;
   text-align: center;
   text-shadow: 0 3px 10px rgba(0,0,0,0.5);
-  padding: 0 16px;
 }
-.hero-text h1{ font-size: 36px; margin-bottom: 10px; }
-.hero-text p{ font-size: 18px; margin-bottom: 18px; }
 
-/* cards / articles / layout */
+/* ==========================
+   ARTICLES / GRID
+   ========================== */
+
 .section{ padding: 26px 0; }
+
 .articles-grid{
   display: grid;
   grid-template-columns: repeat(auto-fit,minmax(260px,1fr));
   gap: 18px;
 }
+
 .card{
   background: white;
   border-radius: 8px;
   padding: 12px;
   box-shadow: 0 3px 8px rgba(0,0,0,0.06);
 }
-.card img{ width:100%; height:150px; object-fit:cover; border-radius:6px; }
-
-/* ==========================
-   Footer specific small helpers
-   ========================== */
-.footer-link { color: white; text-decoration: none; transition: background .2s, color .2s; padding: 2px 4px; border-radius:4px; }
-.footer-link:hover { background: rgba(255,255,255,0.06); color: var(--accent); }
-.social-icon { color: white; font-size: 20px; margin: 0 12px; text-decoration: none; display: inline-block; }
-.social-icon:hover { transform: none; /* évite surbrillance/déplacement */ }
-
-/* ==========================
-   Responsive
-   ========================== */
-@media (max-width: 900px) {
-
-  /* Topbar adjustments */
-  .desktop-menu { display: none; }
-  .menu-btn { display: block; }
-
-  /* mobile-menu */
-  .mobile-menu { display: none; } /* garde caché par défaut */
-  .mobile-menu.active { display: flex; }
-
-  /* hero text sizing */
-  .hero-text h1 { font-size: 28px; }
-  .hero-text p { font-size: 16px; }
-
-  /* categories / cards adapt */
-  .card img { height: 150px; }
-  .container { padding: 0 12px; }
+.card img{
+  width:100%;
+  height:150px;
+  object-fit:cover;
+  border-radius:6px;
 }
 
-/* small screens */
-@media (max-width: 480px) {
-  .hero { height: 60vh; }
-  .logo { font-size: 20px; }
-  .dropbtn { font-size: 14px; padding: 8px 6px; }
+/* ==========================
+   RESPONSIVE
+   ========================== */
+
+@media (max-width: 900px){
+  .desktop-menu{ display:none; }
+  .menu-btn{ display:block; }
+  .mobile-menu.active{ display:flex; }
+}
+
+@media (max-width: 480px){
+  .logo{ font-size:20px; }
+  .dropbtn{ font-size:14px; }
 }
