@@ -66,11 +66,3 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     }
 });
-
-<script>
-document.querySelectorAll('.mobile-dropbtn').forEach(btn => {
-  btn.addEventListener('click', () => {
-    btn.parentElement.classList.toggle('active');
-  });
-});
-</script>
