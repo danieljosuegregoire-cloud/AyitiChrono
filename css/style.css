@@ -94,24 +94,35 @@ body {
   background: none;
   border: none;
   color: white;
-  font-size: 16px;
+  font-size: 15px;         /* même taille que les autres liens */
   cursor: pointer;
-  padding: 10px 15px;
+  padding: 6px 8px;        /* même padding que les <a> du menu */
+  border-radius: 4px;      /* pour cohérence avec les hover */
+  text-decoration: none;
+  font-family: inherit;    /* garantit la même police */
+}
+
+.dropbtn:hover {
+  background: rgba(255,255,255,0.06);
 }
 
 .dropdown-content {
   display: none;
   position: absolute;
+  top: 100%;               /* bien sous le bouton */
+  left: 0;
   background: #003366;
   min-width: 200px;
+  padding-top: 4px;
   box-shadow: 0 4px 8px rgba(0,0,0,0.2);
-  z-index: 10;
+  z-index: 20;
 }
 
 .dropdown-content a {
   color: white;
   padding: 10px;
   display: block;
+  font-size: 14px;
   text-decoration: none;
 }
 
@@ -120,37 +131,6 @@ body {
 }
 
 .dropdown:hover .dropdown-content {
-  display: block;
-}
-
-/* Mobile dropdown */
-.mobile-dropdown {
-  margin-bottom: 10px;
-}
-
-.mobile-dropbtn {
-  width: 100%;
-  background: none;
-  border: none;
-  color: white;
-  font-size: 18px;
-  text-align: left;
-  padding: 10px 0;
-}
-
-.mobile-dropdown-content {
-  display: none;
-  padding-left: 15px;
-}
-
-.mobile-dropdown-content a {
-  color: white;
-  text-decoration: none;
-  padding: 8px 0;
-  display: block;
-}
-
-.mobile-dropdown.active .mobile-dropdown-content {
   display: block;
 }
 
