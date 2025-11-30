@@ -7,6 +7,36 @@
   text-align:center;
 ">
 
+  <style>
+    /* Lien propre et sans surbrillance */
+    .footer-link {
+      color: #ffffff;
+      text-decoration: none;
+      font-weight: normal;
+    }
+    .footer-link:hover {
+      text-decoration: underline;
+    }
+
+    /* Icônes sociales sans surbrillance ni effet bleu */
+    .social-icon {
+      color: #ffffff;
+      font-size: 22px;
+      margin: 0 10px;
+      text-decoration: none;
+    }
+    .social-icon:hover {
+      color: #cccccc;
+    }
+
+    /* Supprimer la surbrillance (focus outline bleu) */
+    .footer-link:focus,
+    .social-icon:focus {
+      outline: none !important;
+      box-shadow: none !important;
+    }
+  </style>
+
   <div style="max-width:1200px; margin:auto; display:flex; flex-wrap:wrap; justify-content:center; gap:40px;">
 
     <!-- À propos -->
@@ -22,7 +52,10 @@
       <h3 style="margin-bottom:10px; font-size:20px;">Contact</h3>
       <p style="line-height:1.6;">
         Adresse : 109, Delmas 83, rue Beaubrun, Haïti<br>
-        Email : <a href="mailto:contact@ayitichrono.com" class="footer-link">contact@ayitichrono.com</a>
+        Email : 
+        <a href="mailto:contact@ayitichrono.com" class="footer-link">
+          contact@ayitichrono.com
+        </a>
       </p>
     </div>
 
@@ -30,6 +63,7 @@
     <div style="flex:1 1 250px;">
       <h3 style="margin-bottom:10px; font-size:20px;">Nous suivre</h3>
       <p style="line-height:2; font-size:20px;">
+
         <a href="https://www.facebook.com/share/1CgXuUaL6V/" target="_blank" rel="noopener noreferrer" aria-label="Facebook" class="social-icon">
           <i class="fab fa-facebook-f" aria-hidden="true"></i>
         </a>
@@ -45,10 +79,11 @@
         <a href="https://x.com/ayitichrono" target="_blank" rel="noopener noreferrer" aria-label="X (Twitter)" class="social-icon">
           <i class="fab fa-x" aria-hidden="true"></i>
         </a>
+
       </p>
     </div>
 
-    <!-- Mentions légales et politique -->
+    <!-- Mentions légales -->
     <div style="flex:1 1 250px;">
       <h3 style="margin-bottom:10px; font-size:20px;">Mentions légales</h3>
       <p style="line-height:1.6;">
