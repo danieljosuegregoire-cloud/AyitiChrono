@@ -84,6 +84,76 @@ body {
 }
 .mobile-menu a:last-child{border-bottom:none;}
 
+/* Desktop dropdown */
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.dropbtn {
+  background: none;
+  border: none;
+  color: white;
+  font-size: 16px;
+  cursor: pointer;
+  padding: 10px 15px;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background: #003366;
+  min-width: 200px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+  z-index: 10;
+}
+
+.dropdown-content a {
+  color: white;
+  padding: 10px;
+  display: block;
+  text-decoration: none;
+}
+
+.dropdown-content a:hover {
+  background: #002244;
+}
+
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+
+/* Mobile dropdown */
+.mobile-dropdown {
+  margin-bottom: 10px;
+}
+
+.mobile-dropbtn {
+  width: 100%;
+  background: none;
+  border: none;
+  color: white;
+  font-size: 18px;
+  text-align: left;
+  padding: 10px 0;
+}
+
+.mobile-dropdown-content {
+  display: none;
+  padding-left: 15px;
+}
+
+.mobile-dropdown-content a {
+  color: white;
+  text-decoration: none;
+  padding: 8px 0;
+  display: block;
+}
+
+.mobile-dropdown.active .mobile-dropdown-content {
+  display: block;
+}
+
 /* Responsive */
 @media (max-width: 768px) {
   .desktop-menu {
