@@ -3,10 +3,10 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
-  <title>AyitiChrono – International</title>
+  <title>AyitiChrono – Géopolitique</title>
 
-  <!-- CSS GLOBAL -->
-  <link rel="stylesheet" href="css/style.css">
+  <!-- CSS global -->
+  <link rel="stylesheet" href="/css/style.css">
 
   <!-- Icônes Font Awesome -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" crossorigin="anonymous">
@@ -18,7 +18,7 @@
 
 <!-- ===================== CONTENU ===================== -->
 <main class="section">
-  <h1>Actualité – International</h1>
+  <h1>Actualité – Géopolitique</h1>
 
   <section class="articles">
     <div class="articles-list"></div>
@@ -29,30 +29,40 @@
 <div id="footer-container"></div>
 
 <!-- ===================== CHARGEMENT HEADER + FOOTER ===================== -->
-<script src="js/header.js"></script>
+<script src="/js/header.js"></script>
 
-<!-- ===================== ARTICLES INTERNATIONAL ===================== -->
+<!-- ===================== ARTICLES GEOPOLITIQUE ===================== -->
 <script>
-const categorie = "international";
+const categorie = "geopolitique";
 const container = document.querySelector(".articles-list");
 
-fetch("articles.json")
+fetch("/articles.json")
   .then(response => response.json())
   .then(data => {
     if (data[categorie]) {
-      data[categorie].forEach(article => {
-        const card = document.createElement("div");
-        card.classList.add("card");
+      // Parcourt toutes les sous-catégories
+      Object.keys(data[categorie]).forEach(souscatKey => {
+        const souscat = data[categorie][souscatKey];
 
-        card.innerHTML = `
-          <a href="${article.url}">
-            <img src="${article.image}" alt="${article.title}" style="width:100%;border-radius:6px;">
-            <h2>${article.title}</h2>
-            <p>${article.summary}</p>
-          </a>
-        `;
+        // Ajoute un titre de sous-catégorie si elle contient des articles
+        if (souscat.length > 0) {
+          const souscatTitle = document.createElement("h2");
+          souscatTitle.textContent = souscatKey.replace(/-/g, ' ').toUpperCase();
+          container.appendChild(souscatTitle);
 
-        container.appendChild(card);
+          souscat.forEach(article => {
+            const card = document.createElement("div");
+            card.classList.add("card");
+            card.innerHTML = `
+              <a href="${article.url}">
+                <img src="${article.image}" alt="${article.title}" style="width:100%;border-radius:6px;">
+                <h3>${article.title}</h3>
+                <p>${article.summary}</p>
+              </a>
+            `;
+            container.appendChild(card);
+          });
+        }
       });
     }
   })
