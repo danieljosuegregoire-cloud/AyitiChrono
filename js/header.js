@@ -1,68 +1,91 @@
-// ==============================
-// header.js – Gestion du menu et chargement dynamique
-// ==============================
+// js/header.js
+document.addEventListener("DOMContentLoaded", function() {
 
-document.addEventListener("DOMContentLoaded", function () {
+  // Chemins relatifs (header.html et footer.html doivent être à la racine ou même dossier)
+  const headerContainer = document.getElementById("header-container");
+  const footerContainer = document.getElementById("footer-container");
 
-    // ------------------------------
-    // 1️⃣ Charger dynamiquement le HEADER
-    // ------------------------------
-    const headerContainer = document.getElementById("header-container");
-    if (headerContainer) {
-        fetch("header.html")
-            .then(response => response.text())
-            .then(data => {
-                headerContainer.innerHTML = data;
+  function afterInjectInit() {
+    // --- sélection des éléments du header (après injection) ---
+    const menuBtn = document.getElementById("menu-btn");
+    const mobileMenu = document.getElementById("mobile-menu");
 
-                // Une fois le header chargé, on peut initialiser le menu mobile
-                initMobileMenu();
-            })
-            .catch(err => console.error("Erreur chargement header :", err));
+    // mobile submenu buttons (dans header.html on a .mobile-dropdown et .mobile-dropbtn)
+    const mobileDropButtons = document.querySelectorAll(".mobile-dropbtn");
+
+    // Ouvre/ferme mobile menu
+    if (menuBtn && mobileMenu) {
+      menuBtn.addEventListener("click", function(e){
+        e.stopPropagation();
+        mobileMenu.classList.toggle("active");
+        mobileMenu.setAttribute("aria-hidden", !mobileMenu.classList.contains("active"));
+      });
+
+      // fermer si on clique ailleurs
+      document.addEventListener("click", function(){
+        if (mobileMenu.classList.contains("active")) {
+          mobileMenu.classList.remove("active");
+          mobileMenu.setAttribute("aria-hidden","true");
+        }
+      });
+
+      // echap ferme
+      document.addEventListener("keydown", function(e){
+        if (e.key === "Escape") {
+          mobileMenu.classList.remove("active");
+          mobileMenu.setAttribute("aria-hidden","true");
+        }
+      });
     }
 
-    // ------------------------------
-    // 2️⃣ Charger dynamiquement le FOOTER
-    // ------------------------------
-    const footerContainer = document.getElementById("footer-container");
-    if (footerContainer) {
-        fetch("footer.html")
-            .then(response => response.text())
-            .then(data => {
-                footerContainer.innerHTML = data;
-            })
-            .catch(err => console.error("Erreur chargement footer :", err));
+    // Empêche la fermeture si on clique à l'intérieur du menu (utile)
+    if (mobileMenu) {
+      mobileMenu.addEventListener("click", function(e){ e.stopPropagation(); });
     }
 
-    // ------------------------------
-    // 3️⃣ Fonction d'initialisation du menu mobile
-    // ------------------------------
-    function initMobileMenu() {
-        const menuBtn = document.querySelector(".menu-btn");
-        const mobileMenu = document.querySelector(".mobile-menu");
+    // Mobile submenu toggle (pour chaque bloc .mobile-dropdown)
+    mobileDropButtons.forEach(btn => {
+      btn.addEventListener("click", function(e){
+        const wrapper = btn.closest(".mobile-dropdown");
+        if (!wrapper) return;
+        wrapper.classList.toggle("active"); // CSS .mobile-dropdown.active .mobile-dropdown-content { display:block }
+      });
+    });
 
-        if (!menuBtn || !mobileMenu) return; // pas de menu, rien à faire
+    // Desktop: pour sécurité, fermer dropdowns au clic dehors
+    document.addEventListener("click", function(e){
+      // si on clique en dehors d'un dropdown ouvert, on ferme tous
+      document.querySelectorAll(".dropdown-content").forEach(dc => {
+        const parent = dc.closest(".dropdown");
+        if (parent && !parent.contains(e.target)) {
+          dc.style.display = ""; // reset (hover gère l'ouverture)
+        }
+      });
+    });
+  }
 
-        // Ouvrir / fermer le menu au clic
-        menuBtn.addEventListener("click", function (e) {
-            e.stopPropagation(); // empêche la propagation
-            mobileMenu.classList.toggle("active");
-        });
+  // Injecte header puis footer, puis initialise
+  function inject(filePath, container, cb) {
+    if (!container) { cb && cb(); return; }
+    fetch(filePath)
+      .then(r => {
+        if (!r.ok) throw new Error("HTTP " + r.status);
+        return r.text();
+      })
+      .then(html => {
+        container.innerHTML = html;
+        cb && cb();
+      })
+      .catch(err => {
+        console.error("Erreur chargement", filePath, err);
+        cb && cb();
+      });
+  }
 
-        // Empêche fermeture si on clique dans le menu
-        mobileMenu.addEventListener("click", function (e) {
-            e.stopPropagation();
-        });
+  // Utiliser chemins relatifs (header.html et footer.html au même niveau que la page)
+  inject("header.html", headerContainer, function(){
+    // Une fois header injecté, injecter footer puis init
+    inject("footer.html", footerContainer, afterInjectInit);
+  });
 
-        // Ferme le menu si on clique ailleurs
-        document.addEventListener("click", function () {
-            mobileMenu.classList.remove("active");
-        });
-
-        // Ferme le menu avec la touche Échap
-        document.addEventListener("keydown", function (e) {
-            if (e.key === "Escape") {
-                mobileMenu.classList.remove("active");
-            }
-        });
-    }
 });
