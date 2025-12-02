@@ -5,14 +5,9 @@
       "image": "/images/articles/politique/crise-parlement.jpg",
       "url": "/articles/politique/crise-parlement.html",
       "summary": "Analyse de la séance du Parlement et des tensions actuelles."
-    },
-    {
-      "title": "Élections locales : tout ce qu’il faut savoir",
-      "image": "/images/articles/politique/elections-locales.jpg",
-      "url": "/articles/politique/elections-locales.html",
-      "summary": "Calendrier, candidats et enjeux des élections locales."
     }
   ],
+
   "economie": [
     {
       "title": "Inflation en hausse",
@@ -21,6 +16,7 @@
       "summary": "Les impacts sur les ménages et les entreprises en Haïti."
     }
   ],
+
   "societe": [
     {
       "title": "Nouvelle loi sur l’éducation",
@@ -29,12 +25,41 @@
       "summary": "Ce que cette réforme change pour les écoles et les étudiants."
     }
   ],
-  "international": [
-    {
-      "title": "Sommet mondial sur le climat",
-      "image": "/images/articles/international/climat.jpg",
-      "url": "/articles/international/climat.html",
-      "summary": "Décisions et implications pour Haïti et le monde."
-    }
-  ]
+
+  "geopolitique": {
+    "brics": [
+      {
+        "title": "BRICS : nouvelles dynamiques économiques",
+        "image": "/images/articles/geopolitique/brics/sommaire.jpg",
+        "url": "/articles/geopolitique/brics/vers-nouvelles-alliance.html",
+        "summary": "Tour d’horizon des dernières décisions et de leur portée stratégique."
+      }
+    ],
+
+    "republique-dominicaine": [
+      {
+        "title": "Haïti–République dominicaine : enjeux frontaliers",
+        "image": "/images/articles/geopolitique/rep-dom/frontiere.jpg",
+        "url": "/articles/geopolitique/rep-dom/enjeux-frontaliers.html",
+        "summary": "Relations bilatérales et conséquences pour la région."
+      }
+    ],
+
+    "etats-unis": [
+      {
+        "title": "Les États-Unis réexaminent la résidence permanente pour 19 pays, dont Haïti",
+        "image": "/images/articles/geopolitique/usa/reexamen-residence.jpg",
+        "url": "/articles/geopolitique/etats-unis/reexamen-residence-permanente.html",
+        "summary": "L’administration américaine annonce un réexamen des procédures de résidence permanente pour ressortissants de 19 pays, dont Haïti ; article signé Etienne.",
+        "author": "Etienne VILFORT",
+        "date": "2025-??-??"
+      }
+    ],
+
+    "canada": [],
+
+    "union-europeenne": [],
+
+    "autres": []
+  }
 }
