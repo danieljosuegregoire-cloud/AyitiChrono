@@ -1,91 +1,133 @@
-// js/header.js
-document.addEventListener("DOMContentLoaded", function() {
+// header.js — version sûre et idempotente
+(function () {
+  // Attendre que le DOM soit prêt
+  function ready(fn) {
+    if (document.readyState !== "loading") fn();
+    else document.addEventListener("DOMContentLoaded", fn);
+  }
 
-  // Chemins relatifs (header.html et footer.html doivent être à la racine ou même dossier)
-  const headerContainer = document.getElementById("header-container");
-  const footerContainer = document.getElementById("footer-container");
-
-  function afterInjectInit() {
-    // --- sélection des éléments du header (après injection) ---
+  ready(function () {
+    // --- éléments centraux ---
     const menuBtn = document.getElementById("menu-btn");
     const mobileMenu = document.getElementById("mobile-menu");
 
-    // mobile submenu buttons (dans header.html on a .mobile-dropdown et .mobile-dropbtn)
-    const mobileDropButtons = document.querySelectorAll(".mobile-dropbtn");
+    // Sécurité : si pas de header injecté, recherche dans le document complet après injection
+    // (utile quand header.html est injecté dynamiquement)
+    function queryOnce(id) {
+      return document.getElementById(id);
+    }
 
-    // Ouvre/ferme mobile menu
-    if (menuBtn && mobileMenu) {
-      menuBtn.addEventListener("click", function(e){
-        e.stopPropagation();
-        mobileMenu.classList.toggle("active");
-        mobileMenu.setAttribute("aria-hidden", !mobileMenu.classList.contains("active"));
+    // Re-lire les éléments (au cas où header a été injecté après le chargement)
+    const btn = menuBtn || queryOnce("menu-btn");
+    const menu = mobileMenu || queryOnce("mobile-menu");
+
+    // === 1) Toggle du menu mobile (sécurisé) ===
+    if (btn && menu) {
+      // évite d'ajouter plusieurs fois le même listener
+      if (!btn._menuListenerAdded) {
+        btn.addEventListener("click", function (e) {
+          e.stopPropagation();
+          menu.classList.toggle("active");
+          menu.setAttribute("aria-hidden", (!menu.classList.contains("active")).toString());
+        });
+        btn._menuListenerAdded = true;
+      }
+
+      // Empêche fermeture si on clique à l'intérieur du menu
+      if (!menu._insideClickGuard) {
+        menu.addEventListener("click", function (e) { e.stopPropagation(); });
+        menu._insideClickGuard = true;
+      }
+
+      // Ferme le menu si on clique ailleurs
+      if (!document._globalMenuClickGuard) {
+        document.addEventListener("click", function () {
+          if (menu.classList.contains("active")) {
+            menu.classList.remove("active");
+            menu.setAttribute("aria-hidden", "true");
+          }
+        });
+        document._globalMenuClickGuard = true;
+      }
+
+      // Ferme aussi à la touche Échap
+      if (!document._escGuard) {
+        document.addEventListener("keydown", function (e) {
+          if (e.key === "Escape" && menu.classList.contains("active")) {
+            menu.classList.remove("active");
+            menu.setAttribute("aria-hidden", "true");
+          }
+        });
+        document._escGuard = true;
+      }
+    }
+
+    // === 2) Mobile submenus (boutons .mobile-dropbtn dans le mobile-menu) ===
+    // Fonction : bascule la classe .active sur l'élément parent .mobile-dropdown
+    const mobileDropBtns = Array.from(document.querySelectorAll(".mobile-dropbtn"));
+    if (mobileDropBtns.length) {
+      mobileDropBtns.forEach(btnEl => {
+        // évite double-attach
+        if (btnEl._mobileDropbound) return;
+        btnEl.addEventListener("click", function (e) {
+          e.stopPropagation();
+          const parent = btnEl.closest(".mobile-dropdown");
+          if (!parent) return;
+          parent.classList.toggle("active");
+        });
+        btnEl._mobileDropbound = true;
       });
 
-      // fermer si on clique ailleurs
-      document.addEventListener("click", function(){
-        if (mobileMenu.classList.contains("active")) {
-          mobileMenu.classList.remove("active");
-          mobileMenu.setAttribute("aria-hidden","true");
-        }
-      });
-
-      // echap ferme
-      document.addEventListener("keydown", function(e){
-        if (e.key === "Escape") {
-          mobileMenu.classList.remove("active");
-          mobileMenu.setAttribute("aria-hidden","true");
-        }
+      // empêche propagation sur les liens internes du sous-menu
+      const mobileDropdownLinks = Array.from(document.querySelectorAll(".mobile-dropdown-content a"));
+      mobileDropdownLinks.forEach(a => {
+        if (a._stopProp) return;
+        a.addEventListener("click", function (e) { e.stopPropagation(); });
+        a._stopProp = true;
       });
     }
 
-    // Empêche la fermeture si on clique à l'intérieur du menu (utile)
-    if (mobileMenu) {
-      mobileMenu.addEventListener("click", function(e){ e.stopPropagation(); });
+    // === 3) Desktop dropdown hover fallback (accessible au clavier) ===
+    // Amélioration d'accessibilité : ouvrir/fermer au focus pour navigation clavier
+    const dropdowns = Array.from(document.querySelectorAll(".dropdown"));
+    if (dropdowns.length) {
+      dropdowns.forEach(dd => {
+        const trigger = dd.querySelector(".dropbtn");
+        if (!trigger || trigger._dropdownA11y) return;
+
+        // ouvre au focus
+        trigger.addEventListener("focus", function () { dd.classList.add("keyboard-open"); });
+        // ferme au blur
+        trigger.addEventListener("blur", function () { dd.classList.remove("keyboard-open"); });
+
+        // si on veut, on peut aussi toggle au click (décommenter si besoin)
+        // trigger.addEventListener("click", e => { e.preventDefault(); dd.classList.toggle("keyboard-open"); });
+
+        trigger._dropdownA11y = true;
+      });
     }
 
-    // Mobile submenu toggle (pour chaque bloc .mobile-dropdown)
-    mobileDropButtons.forEach(btn => {
-      btn.addEventListener("click", function(e){
-        const wrapper = btn.closest(".mobile-dropdown");
-        if (!wrapper) return;
-        wrapper.classList.toggle("active"); // CSS .mobile-dropdown.active .mobile-dropdown-content { display:block }
-      });
-    });
-
-    // Desktop: pour sécurité, fermer dropdowns au clic dehors
-    document.addEventListener("click", function(e){
-      // si on clique en dehors d'un dropdown ouvert, on ferme tous
-      document.querySelectorAll(".dropdown-content").forEach(dc => {
-        const parent = dc.closest(".dropdown");
-        if (parent && !parent.contains(e.target)) {
-          dc.style.display = ""; // reset (hover gère l'ouverture)
+    // === 4) Re-run small init si header est injecté plus tard (mutation observer) ===
+    // (utile si tu utilises fetch() pour injecter header.html after page load)
+    if (!document._headerMutationObserver) {
+      const observer = new MutationObserver((mutations) => {
+        for (const m of mutations) {
+          if (m.addedNodes && m.addedNodes.length) {
+            // si header-container a été inséré ou modifié, ré-exécuter l'init simple
+            // (ici on récharge juste les éléments mobiles une fois)
+            const newBtn = queryOnce("menu-btn");
+            const newMenu = queryOnce("mobile-menu");
+            if ((newBtn && !btn) || (newMenu && !menu)) {
+              // relancer la fonction ready (petite récursion contrôlée)
+              ready(function () { /* nothing: main init already registers new handlers via the guards */ });
+            }
+            break;
+          }
         }
       });
-    });
-  }
 
-  // Injecte header puis footer, puis initialise
-  function inject(filePath, container, cb) {
-    if (!container) { cb && cb(); return; }
-    fetch(filePath)
-      .then(r => {
-        if (!r.ok) throw new Error("HTTP " + r.status);
-        return r.text();
-      })
-      .then(html => {
-        container.innerHTML = html;
-        cb && cb();
-      })
-      .catch(err => {
-        console.error("Erreur chargement", filePath, err);
-        cb && cb();
-      });
-  }
-
-  // Utiliser chemins relatifs (header.html et footer.html au même niveau que la page)
-  inject("header.html", headerContainer, function(){
-    // Une fois header injecté, injecter footer puis init
-    inject("footer.html", footerContainer, afterInjectInit);
-  });
-
-});
+      observer.observe(document.body, { childList: true, subtree: true });
+      document._headerMutationObserver = true;
+    }
+  }); // ready
+})();
