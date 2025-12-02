@@ -4,17 +4,26 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <title>AyitiChrono – Économie</title>
+
+  <!-- CSS GLOBAL -->
   <link rel="stylesheet" href="css/style.css">
+
+  <!-- Font Awesome (icônes réseaux sociaux) -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+  <!-- Optionnel : polices -->
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
 </head>
 <body>
 
   <!-- Header injecté -->
-  <div id="header-container"></div>
+  <div id="header-container" aria-hidden="true"></div>
 
   <!-- Contenu principal -->
-  <section class="section">
-    <h2>Économie</h2>
-    <div class="articles">
+  <main class="section container" role="main">
+    <h1>Économie</h1>
+
+    <section class="articles">
       <div class="card">
         <h3>Marché haïtien en chute libre</h3>
         <p>Les PME disparaissent sous l'effet de l'insécurité...</p>
@@ -23,66 +32,43 @@
         <h3>Investissements étrangers, zéro</h3>
         <p>Les investisseurs internationaux s'enfuient d'Haïti...</p>
       </div>
-    </div>
-  </section>
+    </section>
+  </main>
 
   <!-- Footer injecté -->
-  <div id="footer-container"></div>
+  <div id="footer-container" aria-hidden="true"></div>
 
-  <!-- Script pour injecter header, footer et activer menu mobile -->
-  <script>
-    // Charger le header
-    fetch('/header.html')
-      .then(r => r.text())
-      .then(html => {
-        document.getElementById('header-container').innerHTML = html;
+  <!-- JS : header.js s'occupe d'injecter header/footer et d'initialiser le menu -->
+  <!-- Assure-toi que js/header.js contient la version robuste que je t'ai fournie (Promise + initMenu). -->
+  <script src="js/header.js" defer></script>
 
-        // Activer le menu mobile après injection
-        const menuBtn = document.getElementById('menu-btn');
-        const mobileMenu = document.getElementById('mobile-menu');
-        if(menuBtn && mobileMenu){
-          menuBtn.addEventListener('click', () => {
-            mobileMenu.classList.toggle('active');
-            mobileMenu.setAttribute('aria-hidden', !mobileMenu.classList.contains('active'));
-          });
-        }
-      })
-      .catch(err => console.error("Erreur lors du chargement du header :", err));
+  <!-- JS : chargement dynamique des articles (séparé) -->
+  <script defer>
+    (function(){
+      const categorie = "economie";
+      const container = document.querySelector(".articles");
 
-    // Charger le footer
-    fetch('/footer.html')
-      .then(r => r.text())
-      .then(html => {
-        document.getElementById('footer-container').innerHTML = html;
-      })
-      .catch(err => console.error("Erreur lors du chargement du footer :", err));
-
-    // Charger les articles dynamiquement
-    const categorie = "economie"; // changer pour chaque page : politique, economie, societe, international
-    const container = document.querySelector(".articles");
-
-    fetch("/articles.json")
-      .then(response => response.json())
-      .then(data => {
-        if(data[categorie]){
-          data[categorie].forEach(article => {
-            const card = document.createElement("article");
-            card.classList.add("article-card");
-            card.innerHTML = `
-              <a href="${article.url}">
-                <img src="${article.image}" alt="${article.title}">
-                <h2>${article.title}</h2>
-                <p>${article.summary}</p>
-              </a>
-            `;
-            container.appendChild(card);
-          });
-        }
-      })
-      .catch(err => console.error("Erreur lors du chargement des articles :", err));
+      fetch("articles.json")
+        .then(response => response.json())
+        .then(data => {
+          if(data[categorie]){
+            data[categorie].forEach(article => {
+              const card = document.createElement("article");
+              card.classList.add("card");
+              card.innerHTML = `
+                <a href="${article.url}">
+                  <img src="${article.image}" alt="${article.title}">
+                  <h2>${article.title}</h2>
+                  <p>${article.summary}</p>
+                </a>
+              `;
+              container.appendChild(card);
+            });
+          }
+        })
+        .catch(err => console.error("Erreur lors du chargement des articles :", err));
+    })();
   </script>
-
-<script src="header.js"></script>
 
 </body>
 </html>
