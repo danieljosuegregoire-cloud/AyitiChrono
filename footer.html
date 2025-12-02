@@ -1,103 +1,32 @@
-<footer style="
-  background:#003366;
-  color:white;
-  padding:40px 20px;
-  margin-top:60px;
-  font-family:Arial, sans-serif;
-  text-align:center;
-">
-
-  <style>
-    /* Lien propre et sans surbrillance */
-    .footer-link {
-      color: #ffffff;
-      text-decoration: none;
-      font-weight: normal;
-    }
-    .footer-link:hover {
-      text-decoration: underline;
-    }
-
-    /* Icônes sociales sans surbrillance ni effet bleu */
-    .social-icon {
-      color: #ffffff;
-      font-size: 22px;
-      margin: 0 10px;
-      text-decoration: none;
-    }
-    .social-icon:hover {
-      color: #cccccc;
-    }
-
-    /* Supprimer la surbrillance (focus outline bleu) */
-    .footer-link:focus,
-    .social-icon:focus {
-      outline: none !important;
-      box-shadow: none !important;
-    }
-  </style>
-
-  <div style="max-width:1200px; margin:auto; display:flex; flex-wrap:wrap; justify-content:center; gap:40px;">
-
-    <!-- À propos -->
+<!-- footer.html -->
+<footer style="background:#003366;color:white;padding:40px 20px;margin-top:60px;font-family:Arial, sans-serif;text-align:center;">
+  <div style="max-width:1200px;margin:auto;display:flex;flex-wrap:wrap;justify-content:center;gap:40px;">
     <div style="flex:1 1 250px;">
-      <h3 style="margin-bottom:10px; font-size:20px;">À propos</h3>
-      <p style="line-height:1.6;">
-        AyitiChrono est un média en ligne indépendant offrant une information rapide, fiable et structurée sur l’actualité nationale et internationale.
+      <h3 style="margin-bottom:10px;font-size:20px;">À propos</h3>
+      <p style="line-height:1.6;">AyitiChrono est un média en ligne indépendant offrant une information rapide, fiable et structurée...</p>
+    </div>
+
+    <div style="flex:1 1 250px;">
+      <h3 style="margin-bottom:10px;font-size:20px;">Contact</h3>
+      <p style="line-height:1.6;">Adresse : 109, Delmas 83, rue Beaubrun, Haïti<br>
+      Email : <a href="mailto:contact@ayitichrono.com" style="color:white;text-decoration:underline;">contact@ayitichrono.com</a></p>
+    </div>
+
+    <div style="flex:1 1 250px;">
+      <h3 style="margin-bottom:10px;font-size:20px;">Nous suivre</h3>
+      <p style="line-height:2;font-size:20px;">
+        <a href="https://www.facebook.com/share/1CgXuUaL6V/" target="_blank" rel="noopener noreferrer" aria-label="Facebook" style="color:white;margin:0 14px;text-decoration:none;"><i class="fab fa-facebook-f" aria-hidden="true"></i></a>
+        <a href="https://www.youtube.com/@ayitichrono" target="_blank" rel="noopener noreferrer" aria-label="YouTube" style="color:white;margin:0 14px;text-decoration:none;"><i class="fab fa-youtube" aria-hidden="true"></i></a>
+        <a href="https://t.me/ayitichrono" target="_blank" rel="noopener noreferrer" aria-label="Telegram" style="color:white;margin:0 14px;text-decoration:none;"><i class="fab fa-telegram-plane" aria-hidden="true"></i></a>
+        <a href="https://x.com/ayitichrono" target="_blank" rel="noopener noreferrer" aria-label="X" style="color:white;margin:0 14px;text-decoration:none;"><i class="fab fa-x" aria-hidden="true"></i></a>
       </p>
     </div>
 
-    <!-- Contact -->
     <div style="flex:1 1 250px;">
-      <h3 style="margin-bottom:10px; font-size:20px;">Contact</h3>
-      <p style="line-height:1.6;">
-        Adresse : 109, Delmas 83, rue Beaubrun, Haïti<br>
-        Email : 
-        <a href="mailto:contact@ayitichrono.com" class="footer-link">
-          contact@ayitichrono.com
-        </a>
-      </p>
+      <h3 style="margin-bottom:10px;font-size:20px;">Mentions légales</h3>
+      <p style="line-height:1.6;">© 2025 AyitiChrono — Tous droits réservés.<br><a href="politique-confidentialite.html" style="color:white;text-decoration:underline;">Politique de confidentialité</a></p>
     </div>
-
-    <!-- Réseaux sociaux -->
-    <div style="flex:1 1 250px;">
-      <h3 style="margin-bottom:10px; font-size:20px;">Nous suivre</h3>
-      <p style="line-height:2; font-size:20px;">
-
-        <a href="https://www.facebook.com/share/1CgXuUaL6V/" target="_blank" rel="noopener noreferrer" aria-label="Facebook" class="social-icon">
-          <i class="fab fa-facebook-f" aria-hidden="true"></i>
-        </a>
-
-        <a href="https://www.youtube.com/@ayitichrono" target="_blank" rel="noopener noreferrer" aria-label="YouTube" class="social-icon">
-          <i class="fab fa-youtube" aria-hidden="true"></i>
-        </a>
-
-        <a href="https://t.me/@ayitichrono" target="_blank" rel="noopener noreferrer" aria-label="Telegram" class="social-icon">
-          <i class="fab fa-telegram-plane" aria-hidden="true"></i>
-        </a>
-
-        <a href="https://x.com/ayitichrono" target="_blank" rel="noopener noreferrer" aria-label="X (Twitter)" class="social-icon">
-          <i class="fab fa-x" aria-hidden="true"></i>
-        </a>
-
-      </p>
-    </div>
-
-    <!-- Mentions légales -->
-    <div style="flex:1 1 250px;">
-      <h3 style="margin-bottom:10px; font-size:20px;">Mentions légales</h3>
-      <p style="line-height:1.6;">
-        © 2025 AyitiChrono — Tous droits réservés.<br>
-        <a href="politique-confidentialite.html" class="footer-link">Politique de confidentialité</a>
-        <br>
-        Les informations publiées restent la propriété de leurs auteurs respectifs.
-      </p>
-    </div>
-
   </div>
 
-  <div style="text-align:center; margin-top:20px; font-size:14px; opacity:0.3;">
-    Développé avec passion pour une Haïti mieux informée.
-  </div>
-
+  <div style="text-align:center;margin-top:20px;font-size:14px;opacity:0.8;">Développé avec passion pour une Haïti mieux informée.</div>
 </footer>
