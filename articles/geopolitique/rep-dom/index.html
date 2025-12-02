@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>AyitiChrono – République dominicaine</title>
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+
+<div id="header-container"></div>
+
+<section class="section">
+  <h2>République dominicaine</h2>
+  <div class="articles"></div>
+</section>
+
+<div id="footer-container"></div>
+
+<script>
+  // Injecter header
+  fetch('/header.html')
+    .then(r => r.text())
+    .then(h => document.getElementById("header-container").innerHTML = h);
+
+  // Injecter footer
+  fetch('/footer.html')
+    .then(r => r.text())
+    .then(f => document.getElementById("footer-container").innerHTML = f);
+
+  // Charger les articles République dominicaine
+  const categorie = "geopolitique";
+  const souscategorie = "republique-dominicaine";
+
+  fetch("/articles.json")
+    .then(r => r.json())
+    .then(data => {
+      const liste = data[categorie][souscategorie];
+      const container = document.querySelector(".articles");
+
+      liste.forEach(article => {
+        const card = document.createElement("article");
+        card.classList.add("article-card");
+
+        card.innerHTML = `
+          <a href="${article.url}">
+            <img src="${article.image}" alt="${article.title}">
+            <h2>${article.title}</h2>
+            <p>${article.summary}</p>
+          </a>
+        `;
+
+        container.appendChild(card);
+      });
+    });
+</script>
+
+</body>
+</html>
