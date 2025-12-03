@@ -27,7 +27,7 @@ body {
 
 /* HEADER / TOPBAR */
 .topbar{
-  position: sticky;
+  position: fixed;
   top: 0;
   z-index: 999;
   width: 100%;
@@ -38,6 +38,10 @@ body {
   justify-content: space-between;
   padding: 12px 20px;
   box-shadow: 0 2px 6px rgba(0,0,0,0.12);
+}
+
+body {
+  padding-top: 80px;
 }
 
 /* Logo */
