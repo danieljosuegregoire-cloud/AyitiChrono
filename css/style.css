@@ -13,13 +13,24 @@
 }
 
 /* Reset / global */
-* { box-sizing: border-box; margin: 0; padding: 0; }
-html, body { height: 100%; }
+* { 
+  box-sizing: border-box; 
+  margin: 0; 
+  padding: 0; 
+}
+
+html, body { 
+  height: 100%; 
+}
+
 body {
   font-family: Arial, Helvetica, sans-serif;
   color: var(--text);
   background: var(--bg-light);
   line-height: 1.5;
+
+  /* Ajoute ceci pour la topbar fixe */
+  padding-top: 80px; /* ajuster selon la hauteur réelle */
 }
 
 /* Container utilitaire */
